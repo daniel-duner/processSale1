@@ -10,11 +10,11 @@ import exceptions.*;
  *
  */
 public class Amount {
-	private final int amount;
+	private final double amount;
 	private String currency;
 
 	// creates a new instance of Amount
-	public Amount(int amount, String currency) throws InvalidAmountException, InvalidStringException {
+	public Amount(double amount, String currency) throws Exception {
 		if (amount < 0) {
 			throw new InvalidAmountException("Negative values are not allowed");
 		} else {
@@ -32,11 +32,11 @@ public class Amount {
 	// adds or subtracts two amounts with the same currencies and creates a new
 	// instance of Amount
 	public Amount(Amount currentAmount, Amount amountToAdd, char operation)
-			throws InvalidStringException, InvalidCharException, InvalidAmountException {
+			throws Exception {
 		if (currentAmount.getCurrency() != amountToAdd.getCurrency()) {
 			throw new InvalidStringException("The currencies deosn't match, the amounts have to be of the same currency");
 		} else if (operation == '-' || operation == '+') {
-			int newAmount = 0;
+			double newAmount = 0;
 			if (operation == '-') {
 				if(currentAmount.getAmount() - amountToAdd.getAmount() < 0) {
 					throw new InvalidAmountException("Can't have negative Amounts");
@@ -55,7 +55,7 @@ public class Amount {
 	}
 
 	// returns amount
-	public int getAmount() {
+	public double getAmount() {
 		return this.amount;
 	}
 
