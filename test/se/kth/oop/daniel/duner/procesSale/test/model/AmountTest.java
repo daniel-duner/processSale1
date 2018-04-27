@@ -25,6 +25,7 @@ public class AmountTest {
 	public void tearDown(){
 		AmountOneInSEK = null;
 		AmountTwoInEUR = null;
+		AmountTwoInSEK = null;
 	}
 	@Test
 	public void testCreatingAmountCorrect() throws Exception {
@@ -45,7 +46,7 @@ public class AmountTest {
 		newAmount = new Amount(AmountOneInSEK, AmountTwoInEUR,'+');
 		int expResult = 0;
 		int actResult = newAmount.getAmount();
-		assertTrue("value shall be negative", expResult>actResult);
+		assertEquals("value shall be negative", actResult==expResult);
 	}
 
 

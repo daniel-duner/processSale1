@@ -1,15 +1,23 @@
 package integration;
 import model.Amount;
 
+/**
+ * Represents an item
+ * itemDescription: A short text describing the item
+ * price: The price of the item
+ * itemId: Each item have a unique code
+ * @author danielduner
+ *
+ */
 public class Item {
 	
 private int itemId;
 private Amount price;
 private String itemDescription;
 
-public Item() {
+public Item() throws Exception {
 this.itemId = 0;
-this.price = null;
+this.price = new Amount(0,"SEK");
 this.itemDescription = "undefined";
 }
 
