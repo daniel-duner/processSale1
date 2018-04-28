@@ -1,6 +1,10 @@
 package model;
 
-import exceptions.*;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
+import exceptions.InvalidAmountException;
+import exceptions.InvalidCharException;
 
 /**
  * Represents an amount of money in a currency. A currency can be either SEK or
@@ -13,19 +17,19 @@ public class Amount {
 	private final double amount;
 	private String currency;
 
+	public Amount(){
+		amount = 0;
+		currency = "SEK";
+
+	}
 	// creates a new instance of Amount
-	public Amount(double amount, String currency) throws Exception {
+	public Amount(double amount) throws Exception {
 		if (amount < 0) {
 			throw new InvalidAmountException("Negative values are not allowed");
 		} else {
 			this.amount = amount;
-			if ((currency == "SEK") || (currency == "EUR")) {
-				this.currency = currency;
-			} else {
-				throw new InvalidStringException("Only SEK or EUR are allowed currencies");
-			}
-
 		}
+		currency = "SEK";
 
 	}
 
@@ -33,9 +37,7 @@ public class Amount {
 	// instance of Amount
 	public Amount(Amount currentAmount, Amount amountToAdd, char operation)
 			throws Exception {
-		if (currentAmount.getCurrency() != amountToAdd.getCurrency()) {
-			throw new InvalidStringException("The currencies deosn't match, the amounts have to be of the same currency");
-		} else if (operation == '-' || operation == '+') {
+		if (operation == '-' || operation == '+') {
 			double newAmount = 0;
 			if (operation == '-') {
 				if(currentAmount.getAmount() - amountToAdd.getAmount() < 0) {
@@ -52,6 +54,15 @@ public class Amount {
 			throw new InvalidCharException("Only operation - or + are allowed");
 		}
 
+	}
+	
+	public String toString() {
+		NumberFormat formatter = new DecimalFormat("#0.00");     
+		StringBuilder str = new StringBuilder();
+		
+		str.append(currency+" "+formatter.format(amount)+":-");
+		
+		return str.toString();
 	}
 
 	// returns amount

@@ -17,9 +17,9 @@ public class AmountTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		AmountOneInSEK = new Amount(1,"SEK");
-		AmountTwoInSEK = new Amount(2,"SEK");
-		AmountTwoInEUR = new Amount(2,"EUR");
+		AmountOneInSEK = new Amount(1);
+		AmountTwoInSEK = new Amount(2);
+		AmountTwoInEUR = new Amount(2);
 	}
 	@After
 	public void tearDown(){
@@ -35,20 +35,4 @@ public class AmountTest {
 		double delta = expResult-actResult;
 		assertEquals("Object should be created",expResult, actResult,delta);
 	}
-/*	@Test
-	public void testCreatingAmountWithNegativeValue() throws Exception {
-		newAmount = new Amount(AmountOneInSEK, AmountTwoInSEK,'-');
-		double expResult = 0;
-		double actResult = newAmount.getAmount();
-		assertTrue("value shall be negative", expResult>actResult);
-	}
-	@Test
-	public void testCreatingAmountFromAmountsWithDifferentCurrecnies() throws Exception {
-		newAmount = new Amount(AmountOneInSEK, AmountTwoInEUR,'+');
-		double expResult = 0;
-		double actResult = newAmount.getAmount();
-		assertEquals("value shall be negative", actResult==expResult);
-	}
-
-*/
 }
