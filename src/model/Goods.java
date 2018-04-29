@@ -68,7 +68,8 @@ public class Goods {
 	public String toString() {
 		StringBuilder listOfItems = new StringBuilder();
 		for (int i = 0; i < items.length; i++) {
-			listOfItems.append(i + ". " + "QTY[" + quantity[i] + "] - " + items[i].getName() + " - Price ea. "
+			int orderIndexNo = i+1;
+			listOfItems.append(orderIndexNo + ". " + "QTY[" + quantity[i] + "] - " + items[i].getName() + " - Price ea. "
 					+ items[i].getPrice().getAmount() + ":-" + "\n");
 		}
 		listOfItems.append("Total Cost exl. discounts and VAT: " + price.getAmount() + ":-");

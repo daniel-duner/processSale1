@@ -8,7 +8,7 @@ public class CashRegister {
 	}
 
 	public void addPayment(Amount payment) throws Exception {
-		balanceInCash = new Amount (balanceInCash, payment, '-');
+		balanceInCash = new Amount (balanceInCash, payment, '+');
 	}
 
 	public Amount getBalanceInCash() {

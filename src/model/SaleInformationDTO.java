@@ -11,12 +11,14 @@ public class SaleInformationDTO {
 		Amount itemPrice;
 		boolean itemValid;
 		String itemName;
+		int quantity;
 		
 		SaleInformationDTO(SaleInformation saleInformation){
 			runningTotal = saleInformation.getRunningTotal();
 			itemPrice = saleInformation.getItem().getPrice();
 			itemValid = saleInformation.getItemValid();
 			itemName = saleInformation.getItem().getName();
+			quantity = saleInformation.getQuantity();
 		}
 		
 		public Amount getItemPrice() {
@@ -30,5 +32,8 @@ public class SaleInformationDTO {
 		}
 		public String getItemName() {
 			return itemName;
+		}
+		public int getQuantity() {
+			return quantity;
 		}
 }

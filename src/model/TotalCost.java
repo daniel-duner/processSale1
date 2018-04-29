@@ -8,8 +8,7 @@ public class TotalCost {
 	private Amount taxAmount;
 	private ValueAddedTax tax;
 	private Discount discount;
-	private boolean discountEligibility;
-	private String membershipLevel;
+	private Membership membership;
 	
 	
 	public TotalCost() throws Exception {
@@ -18,13 +17,11 @@ public class TotalCost {
 		taxAmount = new Amount(0);
 		tax = new ValueAddedTax(0.25);
 		discount = new Discount(0.1,0.15,0.25);
-		discountEligibility = false;
-		membershipLevel = null;
+		membership = new Membership(false, "none");
 	}
 	
 	public void setDiscountEligibility(Membership membership, Amount price) throws Exception {
-		discountEligibility = membership.getMembership();
-		this.membershipLevel = membership.getMembershipLevel();
+		this.membership = membership;
 		this.setTotalCost(price);
 	}
 	
@@ -32,19 +29,18 @@ public class TotalCost {
 		totalAmount = new Amount(price.getAmount());
 		taxAmount = calculateAmount(price,tax.getValueAddedTax());
 		totalAmount = new Amount(totalAmount, taxAmount, '+');
-		if (discountEligibility) {
-		discountAmount = calculateAmount(price,discount.getDiscount(membershipLevel));
+		if (membership.getMembership()) {
+		discountAmount = calculateAmount(price,discount.getDiscount(membership.getMembershipLevel()));
 		totalAmount = new Amount(totalAmount, discountAmount, '-');
 		}
 	}
 	public String toString() {
 		StringBuilder str = new StringBuilder();
-		str.append("Discount amount: "+ discountAmount.getAmount() + ":- \n");
-		str.append("VAT amount: "+ taxAmount.getAmount() + ":- \n");
-		str.append("Total amount inkl. discounts and VAT: "+ totalAmount.getAmount() + ":- \n");
+		str.append("Discount amount: "+ discountAmount + "\n");
+		str.append("VAT amount: "+ taxAmount + "\n");
+		str.append("Total amount inkl. discounts and VAT: "+ totalAmount + "\n");
 		return str.toString();
 	}
-	
 	public Amount getTotalAmount(){
 		return this.totalAmount;
 	}
@@ -53,6 +49,9 @@ public class TotalCost {
 	}
 	public Amount getTaxAmount(){
 		return this.taxAmount;
+	}
+	public Membership getMembershipLevel() {
+		return membership;
 	}
 	
 	private Amount calculateAmount(Amount price, double increase) throws Exception{

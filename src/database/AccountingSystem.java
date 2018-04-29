@@ -4,7 +4,7 @@ import model.SaleDTO;
 
 public class AccountingSystem {
 	private SaleDTO[] saleRegister;
-	private int latestSaleId;
+	private int latestSaleId = 100;
 
 	public AccountingSystem() {
 		saleRegister = new SaleDTO[0];

@@ -4,6 +4,12 @@ import integration.Membership;
 import model.Adress;
 import model.Customer;
 
+/**
+ * Represents a database that stores all customers (HARDCODED)
+ * @author danielduner
+ *
+ */
+
 public class CustomerRegister {
 	private Customer[] customerRegister;
 	private Adress adress = new Adress("Begslagsvägen", 41, "Stockholm", 16848);
@@ -18,9 +24,9 @@ public class CustomerRegister {
 		customerRegister[4] = new Customer("Sune", "Sunesson", 05050505, adress, new Membership(false, "none"));
 	}
 
-	public Membership searchCustomer(Customer customer) {
+	public Membership searchCustomer(int customerId) {
 		for (int i = 0; i < customerRegister.length; i++) {
-			if (customerRegister[i].getPersonalId() == customer.getPersonalId()) {
+			if (customerRegister[i].getPersonalId() == customerId) {
 				return customerRegister[i].getMembership();
 			}
 		}

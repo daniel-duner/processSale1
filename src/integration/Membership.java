@@ -15,6 +15,11 @@ public class Membership {
 		this.membership = membership;
 		this.membershipLevel = membershipLevel;
 	}
+	
+	public String toString(){
+		String str = ("Membership: " + firstLetterToUpperCase(membershipLevel));
+		return str;
+	}
 
 	public boolean getMembership() {
 		return membership;
@@ -22,6 +27,10 @@ public class Membership {
 
 	public String getMembershipLevel() {
 		return membershipLevel;
+	}
+	private String firstLetterToUpperCase(String input){
+		return input.substring(0, 1).toUpperCase() + input.substring(1);
+		
 	}
 
 }

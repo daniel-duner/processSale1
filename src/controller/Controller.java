@@ -27,12 +27,14 @@ public class Controller {
 	}
 
 	public void startNewSale() throws Exception {
-		sale = new Sale(externalSystemHandler.getLatestSaleId());
+		sale = new Sale(externalSystemHandler.getLatestSaleId()+1);
 	}
 
 	public SaleInformationDTO registerItem(int itemId) throws Exception {
-		
 		return sale.addItem(externalSystemHandler.findItem(itemId));
+	}
+	public SaleInformationDTO registerMultipleItems(int itemId, int quantity) throws Exception {
+		return sale.addMultipleItems(externalSystemHandler.findItem(itemId), quantity);
 	}
 
 	public TotalCost endRegistration() throws Exception {
@@ -45,8 +47,8 @@ public class Controller {
 		return change;
 	}
 
-	public TotalCost requestDiscount(Customer customer) throws Exception {
-		Membership membership = externalSystemHandler.findCustomer(customer);
+	public TotalCost requestDiscount(int customerId) throws Exception {
+		Membership membership = externalSystemHandler.findCustomer(customerId);
 		sale.setDiscountEligibility(membership);
 		return sale.getTotalCost();
 	}

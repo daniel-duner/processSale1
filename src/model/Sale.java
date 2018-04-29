@@ -16,10 +16,11 @@ public class Sale {
 		this.goods = new Goods();
 		this.totalCost = new TotalCost();
 		this.saleInformation = new SaleInformation();
+		this.setStartTime();
 		
 	}
 
-	public void setStarTime() {
+	public void setStartTime() {
 		saleDate.setStartSaleTime();
 		saleDate.setDate();
 	}
@@ -34,6 +35,17 @@ public class Sale {
 			goods.addItem(item);
 		}
 		saleInformation.updateSaleInformation(goods, item);
+		SaleInformationDTO saleInformationDTO = new SaleInformationDTO(saleInformation);
+		return saleInformationDTO;
+	}
+	public SaleInformationDTO addMultipleItems(Item item, int quantity) throws Exception {
+		if (item.getItemValid())
+		{
+			for (int i = 0; i < quantity;i++) {
+				goods.addItem(item);	
+			}	
+		}
+		saleInformation.updateSaleInformation(goods, item, quantity);
 		SaleInformationDTO saleInformationDTO = new SaleInformationDTO(saleInformation);
 		return saleInformationDTO;
 	}

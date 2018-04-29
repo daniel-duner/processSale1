@@ -32,8 +32,8 @@ public class ExternalSystemHandler {
 		registerSoldItemsInInventory(saleDTO);
 		printReceipt(saleDTO);
 	}
-	public Membership findCustomer(Customer customer) {
-		return customerRegister.searchCustomer(customer);
+	public Membership findCustomer(int customerId) {
+		return customerRegister.searchCustomer(customerId);
 	}
 	
 	public Item findItem (int itemId) throws Exception {

@@ -5,6 +5,12 @@ import model.Amount;
 import model.Goods;
 import model.SaleDTO;
 
+/**
+ * Represents a database that stores all Items in store (HARDCODED)
+ * @author danielduner
+ *
+ */
+
 public class Inventory {
 	private Item[] inventory;
 	private int[] quantities;
@@ -19,6 +25,12 @@ public class Inventory {
 		inventory[3] = new Item(1104, new Amount(1099), "Röd mountaincykel av märket X", "Mountainbike BMX26");
 		inventory[4] = new Item(1105, new Amount(8799), "16 GGB Ram, 512 GB SSD-Hårddisk, 13\' skärm",
 				"Bärbar Dator");
+		quantities = new int[5];
+		quantities[0] = 3;
+		quantities[1] = 3;
+		quantities[2] = 3;
+		quantities[3] = 3;
+		quantities[4] = 3;
 	}
 
 	public Item[] getInventory() {
@@ -30,7 +42,7 @@ public class Inventory {
 		int[] quantitySold = saleDTO.getGoods().getQuantity();
 		
 		for (int i = 0; i < soldItems.length; i++) {
-			quantities[searchItem(soldItems[i])] = -quantitySold[i];
+			quantities[searchItem(soldItems[i])]=-quantitySold[i];
 		}
 	}
 	

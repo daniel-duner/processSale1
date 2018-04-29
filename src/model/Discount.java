@@ -77,9 +77,9 @@ public class Discount {
 
 	private boolean checkAllowedMembership(String membershipLevel) {
 		if (membershipLevel != "gold" && membershipLevel != "silver" && membershipLevel != "bronze") {
-			return false;
+			return true;
 		}
-		return true;
+		return false;
 	}
 
 	private boolean checkAllowedDiscountValue(double discount) {

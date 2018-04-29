@@ -12,7 +12,7 @@ public class Payment {
 		this.payment = payment;
 		this.totalCost = totalCost;
 		calculateChange();
-		cashRegister.addPayment(new Amount(payment,change,'-'));
+		cashRegister.addPayment(new Amount(totalCost.getTotalAmount().getAmount()));
 	}
 	
 	
@@ -29,7 +29,7 @@ public class Payment {
 	}
 
 	private void calculateChange() throws Exception {
-		change = new Amount(payment, totalCost.getDiscountAmount(), '-');
+		change = new Amount(payment, totalCost.getTotalAmount(),'-');
 	}
 
 }
