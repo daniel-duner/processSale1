@@ -1,5 +1,11 @@
 package model;
-
+/**
+ * 
+ * Contains and handles information about things affecting the total cost of the sale
+ * 
+ * @author danielduner
+ *
+ */
 public class TotalCost {
 	private Amount totalAmount;
 	private Amount discountAmount;
@@ -8,7 +14,11 @@ public class TotalCost {
 	private Discount discount;
 	private Membership membership;
 	
-	
+	/**
+	 * Instanstiates a standard total cost with a value of 0 and the tax rate set to 25% and the 
+	 * different membership statuses set to 10%, 15% and 25%
+	 * @throws Exception
+	 */
 	public TotalCost() throws Exception {
 		totalAmount = new Amount(0);
 		discountAmount = new Amount(0);
@@ -17,12 +27,34 @@ public class TotalCost {
 		discount = new Discount(0.1,0.15,0.25);
 		membership = new Membership(false, "None");
 	}
+/**
+ * 
+ * Format of the object when presented as a string
+ * 
+ */
+	public String toString() {
+		StringBuilder str = new StringBuilder();
+		str.append("Discount amount: "+ discountAmount + "\n");
+		str.append("VAT amount: "+ taxAmount + "\n");
+		str.append("Total amount inkl. discounts and VAT: "+ totalAmount + "\n");
+		return str.toString();
+	}
 	
+	/**
+	 * sets the membership that decides if discount shall be included or not
+	 * @param membership represents the customers membership
+	 * @param price represents the current price previous to eventual discount
+	 * @throws Exception
+	 */
 	public void setDiscountEligibility(Membership membership, Amount price) throws Exception {
 		this.membership = membership;
 		this.setTotalCost(price);
 	}
-	
+	/**
+	 * Sets/updates the total cost
+	 * @param price represents the new price excluded tax or discounts
+	 * @throws Exception
+	 */
 	public void setTotalCost(Amount price) throws Exception {
 		totalAmount = new Amount(price.getAmount());
 		taxAmount = calculateAmount(price,tax.getValueAddedTax());
@@ -31,13 +63,6 @@ public class TotalCost {
 		discountAmount = calculateAmount(price,discount.getDiscount(membership.getMembershipLevel()));
 		totalAmount = new Amount(totalAmount, discountAmount, '-');
 		}
-	}
-	public String toString() {
-		StringBuilder str = new StringBuilder();
-		str.append("Discount amount: "+ discountAmount + "\n");
-		str.append("VAT amount: "+ taxAmount + "\n");
-		str.append("Total amount inkl. discounts and VAT: "+ totalAmount + "\n");
-		return str.toString();
 	}
 	public Amount getTotalAmount(){
 		return this.totalAmount;

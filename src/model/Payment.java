@@ -24,7 +24,7 @@ public class Payment {
 		this.totalCost = totalCost;
 		calculateChange();
 		cashRegister.addPayment(new Amount(totalCost.getTotalAmount().getAmount()));
-	}
+	} 
 	
 	public Amount getChange() {
 		return change;

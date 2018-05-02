@@ -12,6 +12,7 @@ public class SaleInformationDTO {
 		boolean itemValid;
 		String itemName;
 		int quantity;
+		int noOnList;
 		
 		SaleInformationDTO(SaleInformation saleInformation){
 			runningTotal = saleInformation.getRunningTotal();
@@ -19,6 +20,7 @@ public class SaleInformationDTO {
 			itemValid = saleInformation.getItemValid();
 			itemName = saleInformation.getItem().getName();
 			quantity = saleInformation.getQuantity();
+			noOnList = saleInformation.getNoOnList();
 		}
 		
 		public Amount getItemPrice() {
@@ -35,5 +37,8 @@ public class SaleInformationDTO {
 		}
 		public int getQuantity() {
 			return quantity;
+		}
+		public int getNoOnList() {
+			return noOnList;
 		}
 }

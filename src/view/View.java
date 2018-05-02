@@ -11,7 +11,11 @@ import integration.ExternalSystemHandler;
 import model.Amount;
 import model.CashRegister;
 import model.SaleInformationDTO;
-
+/**
+ * Represents the GUI
+ * @author danielduner
+ *
+ */
 public class View {
 	public static void main(String[] args) throws Exception {
 		AccountingSystem accountingSystem = new AccountingSystem();
@@ -30,12 +34,12 @@ public class View {
 		// Scanning items
 		out.println("Cashier recevies item and starts to register them \n".toUpperCase());
 		out.println("--------------------------------------------\n");
-		runningTotal(controller.registerItem(items[0]), 1);
-		runningTotal(controller.registerItem(items[1]), 2);
-		runningTotal(controller.registerItem(items[1]), 3);
-		runningTotal(controller.registerItem(items[1]), 4);
-		runningTotal(controller.registerItem(items[2]), 5);
-		runningTotal(controller.registerMultipleItems(items[0], 2), 6);
+		runningTotal(controller.registerItem(items[0]));
+		runningTotal(controller.registerItem(items[1]));
+		runningTotal(controller.registerItem(items[1]));
+		runningTotal(controller.registerItem(items[1]));
+		runningTotal(controller.registerItem(items[2]));
+		runningTotal(controller.registerMultipleItems(items[0], 2));
 		out.println("--------------------------------------------\n");
 		out.println("All items are registered and Cashier tells the system that the registration i done\n".toUpperCase());
 		out.println("--------------------------------------------\n");
@@ -54,7 +58,10 @@ public class View {
 		controller.registerPayment(payment);
 
 	}
-
+/**
+ * Hard coded list of item ID:s that is to registered
+ * @return
+ */
 	public static int[] createItemIdsInCart() {
 		int[] cart = new int[3];
 		cart[0] = 1101;
@@ -62,16 +69,21 @@ public class View {
 		cart[2] = 1106;
 		return cart;
 	}
-
-	public static void runningTotal(SaleInformationDTO saleInformationDTO, int currentItemNo) {
+/**
+ * Prints running total
+ * @param saleInformationDTO the saleInformation needed to print the running total
+ * @param currentItemNo the number of the current item
+ */
+	public static void runningTotal(SaleInformationDTO saleInformationDTO) {
 		Amount runningTotal = saleInformationDTO.getRunningTotal();
 		Amount itemPrice = saleInformationDTO.getItemPrice();
 		boolean itemValid = saleInformationDTO.getItemValid();
 		String itemName = saleInformationDTO.getItemName();
 		int quantity = saleInformationDTO.getQuantity();
+		int currentProductNo = saleInformationDTO.getNoOnList();
 
 		if (itemValid) {
-			out.println("Product " + currentItemNo + ": " + itemName + " - QTY " + "[" + quantity + "]"
+			out.println("Product " + currentProductNo + ": " + itemName + " - QTY " + "[" + quantity + "]"
 					+ " - Price ea. " + itemPrice);
 			out.println("Running Total: " + runningTotal + "\n");
 		} else {
