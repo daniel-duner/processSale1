@@ -17,6 +17,10 @@ private Amount price;
 private String itemDescription;
 private boolean itemExist;
 
+/**
+ * Instantiates an Item without arguments
+ * @throws Exception
+ */
 public Item() throws Exception {
 this.name = "undefined";
 this.itemId = 00000000;
@@ -24,6 +28,12 @@ this.price = new Amount(0);
 this.itemDescription = "undefined";
 this.itemExist = true;
 }
+
+/**
+ * Instantiates an Item with a set Item ID
+ * @param itemId
+ * @throws Exception
+ */
 public Item(int itemId) throws Exception {
 this.name = "undefined";
 this.itemId = itemId;
@@ -32,6 +42,13 @@ this.itemDescription = "undefined";
 this.itemExist = false;
 }
 
+/**
+ * Instantiates and item setting all attributes to chosen values with the arguments
+ * @param itemId represents the chosen item Id
+ * @param price represents the chosen the chosen price
+ * @param itemDescription represents the chosen description of the item
+ * @param name represents the chosen name of the item
+ */
 public Item(int itemId, Amount price, String itemDescription,String name) {
 	this.name = name;
 	this.itemId = itemId;
@@ -39,13 +56,18 @@ public Item(int itemId, Amount price, String itemDescription,String name) {
 	this.itemDescription = itemDescription;
 }
 
+/** 
+ * 
+ * Contains the format of the Item when it is turned into a String 
+ * @return	Returns the item as a string representation
+ */
 public String toString() {
-	System.out.println(name);
-	System.out.println(itemId);
-	System.out.println(price.getAmount());
-	System.out.println(itemDescription);
-	return null;
-	
+	StringBuilder str = new StringBuilder();
+	str.append(name +"\n");
+	str.append(itemId +"\n");
+	str.append(price +"\n");
+	str.append(itemDescription +"\n");
+	return str.toString();
 }
 
 public void setName(String name) {
@@ -55,6 +77,7 @@ public void setName(String name) {
 public void setItemId(int itemId) {
 	this.itemId = itemId;
 }
+
 
 public void setPrice(Amount price) {
 	this.price = price;

@@ -1,7 +1,5 @@
 package model;
 
-import integration.Membership;
-
 public class TotalCost {
 	private Amount totalAmount;
 	private Amount discountAmount;
@@ -17,7 +15,7 @@ public class TotalCost {
 		taxAmount = new Amount(0);
 		tax = new ValueAddedTax(0.25);
 		discount = new Discount(0.1,0.15,0.25);
-		membership = new Membership(false, "none");
+		membership = new Membership(false, "None");
 	}
 	
 	public void setDiscountEligibility(Membership membership, Amount price) throws Exception {
@@ -50,7 +48,7 @@ public class TotalCost {
 	public Amount getTaxAmount(){
 		return this.taxAmount;
 	}
-	public Membership getMembershipLevel() {
+	public Membership getMembership() {
 		return membership;
 	}
 	

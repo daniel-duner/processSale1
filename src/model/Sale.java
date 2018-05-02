@@ -50,7 +50,7 @@ public class Sale {
 		return saleInformationDTO;
 	}
 
-	public TotalCost endRegistration() throws Exception {
+	public TotalCost endRegistration() throws Exception {	
 		totalCost.setTotalCost(goods.getPrice());
 		return totalCost;
 	}

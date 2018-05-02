@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import integration.Item;
+import model.Amount;
 import model.Goods;
 
 public class GoodsTest {
@@ -17,8 +19,14 @@ public class GoodsTest {
 	}
 	
 	@Test
-	public void addItemTest() throws Exception {
+	public void addItemToEmptyArrayTest() throws Exception {
+		Item item = new Item(1101, new Amount(1), "description", "name");
 		Goods goods = new Goods();
+		goods.addItem(item);
+		int expResult = item.getItemId();
+		int actResult = goods.getItems()[0].getItemId(); 
+		
+		assertFalse("Verify NOT NULL",expResult == actResult);
 		
 		
 	}

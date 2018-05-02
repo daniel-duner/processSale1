@@ -5,7 +5,7 @@ import static java.lang.System.out;
 import controller.Controller;
 import database.AccountingSystem;
 import database.CustomerRegister;
-import database.Inventory;
+import database.InventorySystem;
 import database.PrintingSystem;
 import integration.ExternalSystemHandler;
 import model.Amount;
@@ -16,7 +16,7 @@ public class View {
 	public static void main(String[] args) throws Exception {
 		AccountingSystem accountingSystem = new AccountingSystem();
 		CustomerRegister customerRegister = new CustomerRegister();
-		Inventory inventory = new Inventory();
+		InventorySystem inventory = new InventorySystem();
 		PrintingSystem printingSystem = new PrintingSystem();
 		CashRegister cashRegister = new CashRegister("SEK");
 		ExternalSystemHandler externalSystemHandler = new ExternalSystemHandler(accountingSystem, customerRegister,
@@ -46,7 +46,7 @@ public class View {
 						.toUpperCase());
 		int customerId = 01010101;
 		out.println("--------------------------------------------\n");
-		out.println(controller.requestDiscount(customerId).getMembershipLevel());
+		out.println(controller.requestDiscount(customerId).getMembership());
 		out.println(controller.requestDiscount(customerId));
 		out.println("--------------------------------------------\n");
 		out.println("Customer pays in cash and the Cashier registers payment \n".toUpperCase());

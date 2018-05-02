@@ -6,6 +6,7 @@ import java.text.NumberFormat;
 import exceptions.InvalidAmountException;
 import exceptions.InvalidCharException;
 
+
 /**
  * Represents an amount of money in a currency. A currency can be either SEK or
  * EUR. Instances are immutable
@@ -22,7 +23,11 @@ public class Amount {
 		currency = "SEK";
 
 	}
-	// creates a new instance of Amount
+/**
+ * creates a new instance of Amount
+ * @param amount represents the chosen amount
+ * @throws Exception
+ */
 	public Amount(double amount) throws Exception {
 		if (amount < 0) {
 			throw new InvalidAmountException("Negative values are not allowed");
@@ -33,20 +38,26 @@ public class Amount {
 
 	}
 
-	// adds or subtracts two amounts with the same currencies and creates a new
-	// instance of Amount
-	public Amount(Amount currentAmount, Amount amountToAdd, char operation)
+	/**
+	 * adds or subtracts two amounts with the same currencies and creates a new instance of Amount
+	 * with the new value
+	 * @param currentAmount represents the amount which we want to subtract from or add to
+	 * @param additionalAmount represents the amount we want to subtract or add to the currentAmount
+	 * @param operation represents the the operation either notation for add or for subtract
+	 * @throws Exception
+	 */
+	public Amount(Amount currentAmount, Amount additionalAmount, char operation)
 			throws Exception {
 		if (operation == '-' || operation == '+') {
 			double newAmount = 0;
 			if (operation == '-') {
-				if(currentAmount.getAmount() - amountToAdd.getAmount() < 0) {
+				if(currentAmount.getAmount() - additionalAmount.getAmount() < 0) {
 					throw new InvalidAmountException("Can't have negative Amounts");
 				} else {
-					newAmount = currentAmount.getAmount() - amountToAdd.getAmount();
+					newAmount = currentAmount.getAmount() - additionalAmount.getAmount();
 				}
 			} else if (operation == '+') {
-				newAmount = currentAmount.getAmount() + amountToAdd.getAmount();
+				newAmount = currentAmount.getAmount() + additionalAmount.getAmount();
 			}
 			this.amount = newAmount;
 			this.currency = currentAmount.getCurrency();
@@ -55,7 +66,10 @@ public class Amount {
 		}
 
 	}
-	
+	/** 
+	 * Contains the format of the Amount when it is turned into a String 
+	 * @return	Returns the amount as string representation
+	 */
 	public String toString() {
 		NumberFormat formatter = new DecimalFormat("#0.00");     
 		StringBuilder str = new StringBuilder();
@@ -65,12 +79,10 @@ public class Amount {
 		return str.toString();
 	}
 
-	// returns amount
 	public double getAmount() {
 		return this.amount;
 	}
 
-	// returns currency
 	public String getCurrency() {
 		return this.currency;
 	}

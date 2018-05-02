@@ -1,4 +1,4 @@
-package integration;
+package model;
 
 /**
  * Represents membership data, only mean to ransport data
@@ -10,12 +10,20 @@ package integration;
 public class Membership {
 	private boolean membership;
 	private String membershipLevel;
-
+/**
+ * Instantiates the a membership
+ * @param membership represents if the membership is valid or not
+ * @param membershipLevel represents the level of the membership
+ */
 	public Membership(boolean membership, String membershipLevel) {
 		this.membership = membership;
 		this.membershipLevel = membershipLevel;
 	}
-	
+/**
+ * 
+ * Format of the object when it's presented as a string
+ * 
+ */
 	public String toString(){
 		String str = ("Membership: " + firstLetterToUpperCase(membershipLevel));
 		return str;

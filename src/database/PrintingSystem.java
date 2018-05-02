@@ -11,8 +11,10 @@ import static java.lang.System.*;
 
 public class PrintingSystem {
 	
+	/**
+	 * Instantiates the printing system
+	 */
 	public PrintingSystem() {
-
 	}
 
 	public void printReceipt(SaleDTO saleDTO) {
