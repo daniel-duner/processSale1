@@ -1,5 +1,7 @@
 package model;
 
+import integration.Amount;
+
 public class CashRegister {
 	private Amount balanceInCash;
 /**

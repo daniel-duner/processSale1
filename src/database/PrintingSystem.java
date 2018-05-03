@@ -15,7 +15,7 @@ public class PrintingSystem {
 	 * Instantiates the printing system
 	 */
 	public PrintingSystem() {
-	}
+	}	
 
 	public void printReceipt(SaleDTO saleDTO) {
 		StringBuilder receipt = new StringBuilder();

@@ -1,7 +1,7 @@
 package database;
 
+import integration.Amount;
 import integration.Item;
-import model.Amount;
 import model.Goods;
 import model.SaleDTO;
 

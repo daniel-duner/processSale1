@@ -1,5 +1,6 @@
 package model;
 
+import integration.Amount;
 import integration.Item;
 
 /**

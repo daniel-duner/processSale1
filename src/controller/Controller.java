@@ -1,8 +1,8 @@
 package controller;
 
+import integration.Amount;
 import integration.ExternalSystemHandler;
 import integration.Item;
-import model.Amount;
 import model.CashRegister;
 import model.Customer;
 import model.Membership;

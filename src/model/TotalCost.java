@@ -1,4 +1,7 @@
 package model;
+
+import integration.Amount;
+
 /**
  * 
  * Contains and handles information about things affecting the total cost of the sale

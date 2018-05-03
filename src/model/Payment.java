@@ -1,4 +1,7 @@
 package model;
+
+import integration.Amount;
+
 /**
  * Represents a payment that the is received from customer to cashier and then to system
  * @author danielduner
@@ -22,7 +25,7 @@ public class Payment {
 		this.cashRegister = cashRegister;
 		this.payment = payment;
 		this.totalCost = totalCost;
-		calculateChange();
+		calculateChange();	
 		cashRegister.addPayment(new Amount(totalCost.getTotalAmount().getAmount()));
 	} 
 	

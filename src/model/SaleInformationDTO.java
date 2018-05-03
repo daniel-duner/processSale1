@@ -1,5 +1,7 @@
 package model;
 
+import integration.Amount;
+
 /**
  * a data cointainer of an instance if saleInformation, to be sent to the UI
  * @author danielduner

@@ -12,7 +12,7 @@ import model.SaleDTO;
 public class AccountingSystem {
 	private SaleDTO[] saleRegister;
 	private int latestSaleId = 100;
-
+	
 	/**
 	 * Instantiates the accounting system
 	 */

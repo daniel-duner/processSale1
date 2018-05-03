@@ -7,8 +7,8 @@ import database.AccountingSystem;
 import database.CustomerRegister;
 import database.InventorySystem;
 import database.PrintingSystem;
+import integration.Amount;
 import integration.ExternalSystemHandler;
-import model.Amount;
 import model.CashRegister;
 import model.SaleInformationDTO;
 /**

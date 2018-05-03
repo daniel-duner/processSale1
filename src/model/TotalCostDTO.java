@@ -1,5 +1,7 @@
 package model;
 
+import integration.Amount;
+
 public class TotalCostDTO {
 	private Amount totalAmount;
 	private Amount discountAmount;

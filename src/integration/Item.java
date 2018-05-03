@@ -1,5 +1,4 @@
 package integration;
-import model.Amount;
 
 /**
  * Represents an item
@@ -55,7 +54,7 @@ public Item(int itemId, Amount price, String itemDescription,String name) {
 	this.price = price;
 	this.itemDescription = itemDescription;
 }
-
+	
 /** 
  * 
  * Contains the format of the Item when it is turned into a String 
@@ -77,7 +76,6 @@ public void setName(String name) {
 public void setItemId(int itemId) {
 	this.itemId = itemId;
 }
-
 
 public void setPrice(Amount price) {
 	this.price = price;

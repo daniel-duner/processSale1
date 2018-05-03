@@ -1,5 +1,6 @@
 package model;
 
+import integration.Amount;
 import integration.Item;
 
 /**
@@ -40,7 +41,7 @@ public class Goods {
 		if (itemExists) {
 			if (items.length == empty) {
 				items = new Item[1];
-				quantity = new int[1];
+				quantity = new int[1];	
 				items[0] = item;
 				quantity[0] = 1;
 				increasePrice(item);
@@ -65,7 +66,7 @@ public class Goods {
 
 /**
  * 
- * Format of the object when converted to string
+ * Format of the object when presented as string
  * 
  */
 	public String toString() {
@@ -75,7 +76,7 @@ public class Goods {
 			listOfItems.append(orderIndexNo + ". " + items[i].getName() + " - " + "QTY[" + quantity[i] + "]"
 					+ " - Price ea. " + items[i].getPrice() + "\n");
 		}
-		listOfItems.append("Total Cost exl. discounts and VAT: " + price.getAmount() + ":-");
+		listOfItems.append("Total Cost exl. discounts and VAT: " + price);
 		return listOfItems.toString();
 	}
 /**
