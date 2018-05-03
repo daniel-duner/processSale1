@@ -6,11 +6,11 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import database.AccountingSystem;
-import database.CustomerRegister;
-import database.InventorySystem;
-import database.PrintingSystem;
-import integration.ExternalSystemHandler;
+import se.kth.oop.daniel.duner.procesSale.database.AccountingSystem;
+import se.kth.oop.daniel.duner.procesSale.database.CustomerRegister;
+import se.kth.oop.daniel.duner.procesSale.database.InventorySystem;
+import se.kth.oop.daniel.duner.procesSale.database.PrintingSystem;
+import se.kth.oop.daniel.duner.procesSale.integration.ExternalSystemHandler;
 
 public class ExternalSystemHandlerTest {
 	private AccountingSystem accSys;

@@ -1,13 +1,18 @@
 package se.kth.oop.daniel.duner.procesSale.test.integration;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import exceptions.*;
-import integration.Amount;
+import exceptions.InvalidAmountException;
+import se.kth.oop.daniel.duner.procesSale.integration.Amount;
+import se.kth.oop.daniel.duner.procesSale.integration.CURRENCY;
 
 public class AmountTest {
 	private Amount AmountOneInSEK;
@@ -23,29 +28,42 @@ public class AmountTest {
 		AmountOneInSEK = null;
 		AmountTwoInSEK = null;
 	}
+	@Test(expected=Exception.class)
+	public void testCreatingAmountIncorrect() throws Exception {
+	 new Amount(-1);
+	}
 	@Test
-	public void testCreatingAmountCorrect() throws Exception {
+	public void testCreatingAmountCorrectAdding() throws Exception {
 		Amount newAmount = new Amount(AmountOneInSEK, AmountOneInSEK,'+');
 		double expResult = 2;
 		double result = newAmount.getAmount();
 		double delta = expResult-result;
-		assertEquals("Object should be created",expResult, result,delta);
+		assertEquals("Object should be created with added value",expResult, result,delta);
 	}
 	
-	//@Test
+	@Test
+	public void testCreatingAmountCorrectSubtracting() throws Exception {
+		Amount newAmount = new Amount(AmountOneInSEK, AmountOneInSEK,'-');
+		double expResult = 0;
+		double result = newAmount.getAmount();
+		double delta = expResult-result;
+		assertEquals("Object should be created with subtracted value",expResult, result,delta);
+	}
+	
+	@Test(expected=Exception.class)
 	public void testCreatingAmountNegative() throws Exception {
-		Amount result = new Amount(AmountOneInSEK, AmountTwoInSEK,'-');
-		assertNull("Object should not be created",result);
+		new Amount(AmountOneInSEK, AmountTwoInSEK,'-');	
+	}
+	@Test(expected=Exception.class)
+	public void testIncorrectOperation() throws Exception {
+		new Amount(AmountOneInSEK, AmountTwoInSEK,'*');	
 	}
 	
 	@Test
 	public void testCreatingAmountwithoutArguments() throws Exception {
 		Amount testAmount = new Amount();
-		boolean result = false;
-		if (testAmount.getAmount() == 0 && testAmount.getCurrency() == "SEK") {
-			result = true;
-		}
-		assertTrue("Object should have correct values", result);
+		assertTrue("Verifies that amount is 0", testAmount.getAmount()==0);
+		assertTrue("verifies that currency is SEK", testAmount.getCurrency() == CURRENCY.SEK);
 	}
 	
 	

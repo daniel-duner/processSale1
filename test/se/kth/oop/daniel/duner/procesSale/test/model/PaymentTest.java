@@ -1,11 +1,15 @@
 package se.kth.oop.daniel.duner.procesSale.test.model;
 
+import static org.junit.Assert.assertEquals;
+
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 
-import integration.Amount;
-import model.CashRegister;
-import model.Payment;
-import model.TotalCost;
+import se.kth.oop.daniel.duner.procesSale.integration.Amount;
+import se.kth.oop.daniel.duner.procesSale.model.CashRegister;
+import se.kth.oop.daniel.duner.procesSale.model.Payment;
+import se.kth.oop.daniel.duner.procesSale.model.TotalCost;
 
 public class PaymentTest {
 	private CashRegister cashRegister;
@@ -13,15 +17,28 @@ public class PaymentTest {
 	private Amount payment;
 	
 	@Before
-	public void setUp() {
-		this.cashRegister = cashRegister;
-		this.payment = payment;
-		this.totalCost = totalCost;
+	public void setUp() throws Exception {
+		this.cashRegister = new CashRegister("SEK");
+		this.payment = new Amount(2);
+		Amount cost = new Amount(1);
+		this.totalCost = new TotalCost();
+		this.totalCost.setTotalCost(cost);
+	}
+	@After
+	public void tearDown() {
+		this.cashRegister = null;
+		this.payment = null;
+		this.totalCost = null;
 	}
 	
 	@Test
-	public void correctChangeCalculatiOnOnconstructionTest() {
-		Payment payment = new Paymeny()
+	public void correctChangeCalculatiOnOnconstructionTest() throws Exception {
+		Payment newPayment = new Payment(payment, totalCost, cashRegister);
+		double expResult = 1;
+		double result = newPayment.getChange().getAmount();
+		double delta = 1-newPayment.getChange().getAmount();
+		
+		assertEquals("",expResult,result, delta);
 	}
 
 }
