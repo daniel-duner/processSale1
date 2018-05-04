@@ -1,7 +1,5 @@
 package se.kth.oop.daniel.duner.procesSale.model;
 
-import se.kth.oop.daniel.duner.procesSale.integration.Amount;
-
 /**
  * Represents a payment that the is received from customer to cashier and then to system
  * @author danielduner

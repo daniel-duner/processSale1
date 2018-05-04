@@ -1,21 +1,21 @@
-package se.kth.oop.daniel.duner.procesSale.database;
+package se.kth.oop.daniel.duner.procesSale.integration;
 
 import static java.lang.System.*;
 
 import se.kth.oop.daniel.duner.procesSale.model.SaleDTO;
 
 /**
- * Represents a database that stores all sales (HARDCODED)
+ * Represents the system that handles the printer system that prints out receipts
  * @author danielduner
  *
  */
 
-public class PrintingSystem {
+public class PrintingSystemHandler {
 	
 	/**
 	 * Instantiates the printing system
 	 */
-	public PrintingSystem() {
+	public PrintingSystemHandler() {
 	}	
 
 	public void printReceipt(SaleDTO saleDTO) {

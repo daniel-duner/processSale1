@@ -1,6 +1,5 @@
 package se.kth.oop.daniel.duner.procesSale.model;
 
-import exceptions.InvalidAmountException;
 /**
  * Contains information of value added tax
  * @author danielduner

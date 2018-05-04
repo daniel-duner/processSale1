@@ -1,8 +1,5 @@
 package se.kth.oop.daniel.duner.procesSale.model;
 
-import se.kth.oop.daniel.duner.procesSale.integration.Amount;
-import se.kth.oop.daniel.duner.procesSale.integration.MEMLVL;
-
 /**
  * 
  * Contains and handles information about things affecting the total cost of the sale

@@ -1,8 +1,5 @@
 package se.kth.oop.daniel.duner.procesSale.model;
 
-import se.kth.oop.daniel.duner.procesSale.integration.Amount;
-import se.kth.oop.daniel.duner.procesSale.integration.Item;
-
 /**
  * Handles and contains information about a sale that is needed during a sale
  * process
@@ -17,6 +14,7 @@ public class SaleInformation {
 	private boolean itemValid;
 	private int quantity;
 	private int noOnList;
+	private final int singleItem = 1;
 
 	/**
 	 * Instantiates a saleInformation
@@ -38,7 +36,7 @@ public class SaleInformation {
 	 */
 	public void updateSaleInformation(Goods goods, Item item) throws Exception {
 		this.updateInformation(goods, item);
-		this.quantity = 1;
+		this.quantity = singleItem;
 	}
 
 	/**

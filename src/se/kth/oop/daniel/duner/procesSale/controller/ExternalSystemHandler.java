@@ -1,10 +1,11 @@
-package se.kth.oop.daniel.duner.procesSale.integration;
+package se.kth.oop.daniel.duner.procesSale.controller;
 
-import se.kth.oop.daniel.duner.procesSale.database.AccountingSystem;
-import se.kth.oop.daniel.duner.procesSale.database.CustomerRegister;
-import se.kth.oop.daniel.duner.procesSale.database.InventorySystem;
-import se.kth.oop.daniel.duner.procesSale.database.PrintingSystem;
+import se.kth.oop.daniel.duner.procesSale.integration.AccountingSystemHandler;
+import se.kth.oop.daniel.duner.procesSale.integration.CustomerRegisterHandler;
+import se.kth.oop.daniel.duner.procesSale.integration.InventorySystemHandler;
+import se.kth.oop.daniel.duner.procesSale.integration.PrintingSystemHandler;
 import se.kth.oop.daniel.duner.procesSale.model.Customer;
+import se.kth.oop.daniel.duner.procesSale.model.Item;
 import se.kth.oop.daniel.duner.procesSale.model.Membership;
 import se.kth.oop.daniel.duner.procesSale.model.SaleDTO;
 /**
@@ -13,10 +14,10 @@ import se.kth.oop.daniel.duner.procesSale.model.SaleDTO;
  *
  */
 public class ExternalSystemHandler {
-	private AccountingSystem accountingSystem;
-	private CustomerRegister customerRegister;
-	private InventorySystem inventory;
-	private PrintingSystem printingSystem;
+	private AccountingSystemHandler accountingSystemHandler;
+	private CustomerRegisterHandler customerRegisterHandler;
+	private InventorySystemHandler inventoryHandler;
+	private PrintingSystemHandler printingSystemHandler;
 	
 	/**
 	 * 
@@ -27,12 +28,12 @@ public class ExternalSystemHandler {
 	 * @param inventory represents the inventory system
 	 * @param printingSystem represents the printing system
 	 */
-	public ExternalSystemHandler(AccountingSystem accountingSystem,
-			CustomerRegister customerRegister, InventorySystem inventory, PrintingSystem printingSystem){
-		this.accountingSystem = accountingSystem;
-		this.customerRegister = customerRegister;
-		this.inventory = inventory;
-		this.printingSystem = printingSystem;
+	public ExternalSystemHandler(AccountingSystemHandler accountingSystemHandler,
+			CustomerRegisterHandler customerRegisterHandler, InventorySystemHandler inventoryHandler, PrintingSystemHandler printingSystemHandler){
+		this.accountingSystemHandler = accountingSystemHandler;
+		this.customerRegisterHandler = customerRegisterHandler;
+		this.inventoryHandler = inventoryHandler;
+		this.printingSystemHandler = printingSystemHandler;
 	}
 	
 	/**
@@ -42,7 +43,7 @@ public class ExternalSystemHandler {
 	 * @return returns int representing the last sale ID
 	 */
 	public int getLatestSaleId() {
-		return accountingSystem.getLatestSaleId();
+		return accountingSystemHandler.getLatestSaleId();
 	}
 	
 	/**
@@ -52,20 +53,20 @@ public class ExternalSystemHandler {
 	 * @param saleDTO contains all information about the sale
 	 */
 	public void registerCompletedSale(SaleDTO saleDTO) {
-		accountingSystem.registerCompletedSale(saleDTO);
+		accountingSystemHandler.registerCompletedSale(saleDTO);
 		registerSoldItemsInInventory(saleDTO);
 		printReceipt(saleDTO);
 	}
 	
 	/**
 	 * 
-	 * Searches the customer register aftera a matching ID
+	 * Searches the customer register after a matching ID
 	 * 
 	 * @param customerId a 8 digit code
 	 * @return returns membership information
 	 */
 	public Membership findCustomer(int customerId) {
-		return customerRegister.searchCustomer(customerId);
+		return customerRegisterHandler.searchCustomer(customerId);
 	}
 	
 	/**
@@ -77,14 +78,14 @@ public class ExternalSystemHandler {
 	 * @throws Exception
 	 */
 	public Item findItem (int itemId) throws Exception {
-		return inventory.findItem(itemId);
+		return inventoryHandler.findItem(itemId);
 	}
 	
 	private void registerSoldItemsInInventory(SaleDTO saleDTO) {
-		inventory.updateInventory(saleDTO);
+		inventoryHandler.updateInventory(saleDTO);
 	}
 	private void printReceipt(SaleDTO saleDTO) {
-		printingSystem.printReceipt(saleDTO);
+		printingSystemHandler.printReceipt(saleDTO);
 	}
 	
 }

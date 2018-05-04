@@ -8,9 +8,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import se.kth.oop.daniel.duner.procesSale.integration.Amount;
-import se.kth.oop.daniel.duner.procesSale.integration.Item;
+import se.kth.oop.daniel.duner.procesSale.model.Amount;
 import se.kth.oop.daniel.duner.procesSale.model.Goods;
+import se.kth.oop.daniel.duner.procesSale.model.Item;
 
 public class GoodsTest {
 	private Item item1;

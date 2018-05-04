@@ -1,7 +1,5 @@
 package se.kth.oop.daniel.duner.procesSale.model;
 
-import se.kth.oop.daniel.duner.procesSale.integration.Amount;
-
 public class CashRegister {
 	private Amount balanceInCash;
 /**
@@ -9,7 +7,7 @@ public class CashRegister {
  * @param currency	represents the currency chosen for the cash in the cash register 
  * @throws Exception
  */
-	public CashRegister(String currency) throws Exception {
+	public CashRegister() throws Exception {
 		balanceInCash = new Amount(1000);
 	}
 /**

@@ -1,10 +1,7 @@
-package se.kth.oop.daniel.duner.procesSale.integration;
+package se.kth.oop.daniel.duner.procesSale.model;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
-
-import exceptions.InvalidAmountException;
-import exceptions.InvalidCharException;
 
 
 /**

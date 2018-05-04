@@ -1,7 +1,5 @@
 package se.kth.oop.daniel.duner.procesSale.model;
 
-import se.kth.oop.daniel.duner.procesSale.integration.Amount;
-
 /**
  * a data cointainer of an instance if saleInformation, to be sent to the UI
  * @author danielduner

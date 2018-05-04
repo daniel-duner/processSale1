@@ -1,4 +1,4 @@
-package se.kth.oop.daniel.duner.procesSale.test.integration;
+package se.kth.oop.daniel.duner.procesSale.test.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNull;
@@ -10,9 +10,9 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import exceptions.InvalidAmountException;
-import se.kth.oop.daniel.duner.procesSale.integration.Amount;
-import se.kth.oop.daniel.duner.procesSale.integration.CURRENCY;
+import se.kth.oop.daniel.duner.procesSale.model.Amount;
+import se.kth.oop.daniel.duner.procesSale.model.CURRENCY;
+import se.kth.oop.daniel.duner.procesSale.model.InvalidAmountException;
 
 public class AmountTest {
 	private Amount AmountOneInSEK;

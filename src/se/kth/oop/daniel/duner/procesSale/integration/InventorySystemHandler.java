@@ -1,18 +1,18 @@
-package se.kth.oop.daniel.duner.procesSale.database;
+package se.kth.oop.daniel.duner.procesSale.integration;
 
-import se.kth.oop.daniel.duner.procesSale.integration.Amount;
-import se.kth.oop.daniel.duner.procesSale.integration.Item;
+import se.kth.oop.daniel.duner.procesSale.model.Amount;
 import se.kth.oop.daniel.duner.procesSale.model.Goods;
+import se.kth.oop.daniel.duner.procesSale.model.Item;
 import se.kth.oop.daniel.duner.procesSale.model.SaleDTO;
 
 /**
- * Represents the printer system that prints out receipts
+ * Represents the system that handles the database containing the inventory
  * 
  * @author danielduner
  *
  */
 
-public class InventorySystem {
+public class InventorySystemHandler {
 	private Item[] inventory;
 	private int[] quantities;
 	private boolean itemFound;
@@ -22,7 +22,7 @@ public class InventorySystem {
 	 * 
 	 * @throws Exception
 	 */
-	public InventorySystem() throws Exception {
+	public InventorySystemHandler() throws Exception {
 		inventory = new Item[5];
 		inventory[0] = new Item(1101, new Amount(130), "Blå T-shirt av märket X", "T-shirt");
 		inventory[1] = new Item(1102, new Amount(20), "Blyertspenna med 0.5 cm stift", "Blyertspenna");
@@ -43,6 +43,13 @@ public class InventorySystem {
 	public Item[] getInventory() {
 		return inventory;
 	}
+	/**
+	 * returns the quantities
+	 * @return the array containing the quantities
+	 */
+	public int[] getQuantity() {
+		return quantities;
+	}
 /**
  * Updates the inventory with the information about sold items
  * @param saleDTO contains information about the sold items
@@ -53,7 +60,7 @@ public class InventorySystem {
 		
 		for (int i = 0; i < soldItems.length; i++) {
 			int indexNoInInventory = getItemIndexNo(soldItems[i]);
-			quantities[indexNoInInventory]=-quantitySold[i];
+			quantities[indexNoInInventory]=quantities[indexNoInInventory]-quantitySold[i];
 		}
 	}
 	

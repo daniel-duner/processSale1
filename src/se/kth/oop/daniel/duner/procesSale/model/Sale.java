@@ -1,5 +1,6 @@
 package se.kth.oop.daniel.duner.procesSale.model;
 
+import se.kth.oop.daniel.duner.procesSale.controller.ExternalSystemHandler;
 import se.kth.oop.daniel.duner.procesSale.integration.*;
 /**
  * The class is the general class that tells the other classes what to do, so that the whole sale process
@@ -26,11 +27,12 @@ public class Sale {
 		this.goods = new Goods();
 		this.totalCost = new TotalCost();
 		this.saleInformation = new SaleInformation();
+		this.cashPayment = null;
 		this.setStartTime();
 	}
 
 	/**
-	 * Adds an item to the sale in goods (Calls goods) and returns saleinformation
+	 * Adds an item to the sale in goods (Calls goods) and returns sale information
 	 * to the caller
 	 * @param item represents the item caller wants to add to sale
 	 * @return returns sale information to the caller

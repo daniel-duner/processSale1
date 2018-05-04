@@ -6,7 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import se.kth.oop.daniel.duner.procesSale.integration.Amount;
+import se.kth.oop.daniel.duner.procesSale.model.Amount;
 import se.kth.oop.daniel.duner.procesSale.model.CashRegister;
 import se.kth.oop.daniel.duner.procesSale.model.Payment;
 import se.kth.oop.daniel.duner.procesSale.model.TotalCost;
@@ -18,7 +18,7 @@ public class PaymentTest {
 	
 	@Before
 	public void setUp() throws Exception {
-		this.cashRegister = new CashRegister("SEK");
+		this.cashRegister = new CashRegister();
 		this.payment = new Amount(2);
 		Amount cost = new Amount(1);
 		this.totalCost = new TotalCost();

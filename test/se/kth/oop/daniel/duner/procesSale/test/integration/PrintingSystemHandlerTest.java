@@ -1,7 +1,5 @@
 package se.kth.oop.daniel.duner.procesSale.test.integration;
 
-import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -14,29 +12,20 @@ import se.kth.oop.daniel.duner.procesSale.integration.PrintingSystemHandler;
 import se.kth.oop.daniel.duner.procesSale.model.Amount;
 import se.kth.oop.daniel.duner.procesSale.model.CashRegister;
 import se.kth.oop.daniel.duner.procesSale.model.Item;
+import se.kth.oop.daniel.duner.procesSale.model.Payment;
 import se.kth.oop.daniel.duner.procesSale.model.Sale;
 import se.kth.oop.daniel.duner.procesSale.model.SaleDTO;
 
-public class ExternalSystemHandlerTest {
-	private AccountingSystemHandler accSys;
-	private CustomerRegisterHandler cusReg;
-	private InventorySystemHandler invSys;
-	private PrintingSystemHandler priSys;
-	private ExternalSystemHandler eSH;
+public class PrintingSystemHandlerTest {
 	private CashRegister cashReg;
 	private Amount payment;
 	private Sale sale;
 	private Item item;
 	private SaleDTO saleDTO;
-	
+	PrintingSystemHandler pSH;
 	@Before
 	public void setUp() throws Exception {
-		accSys = new AccountingSystemHandler();	
-		cusReg = new CustomerRegisterHandler();
-		invSys = new InventorySystemHandler();
-		priSys = new PrintingSystemHandler();
 		cashReg = new CashRegister();
-		eSH = new ExternalSystemHandler(accSys, cusReg, invSys, priSys);
 		sale = new Sale(1);
 		item = new Item(1101, new Amount(2), "description", "name");
 		item.setItemExistTrue();
@@ -46,32 +35,20 @@ public class ExternalSystemHandlerTest {
 		sale.registerPayment(payment, cashReg);
 		saleDTO = new SaleDTO(sale);
 	}
+
 	@After
-	public void tearDown() {
-		accSys = null;
-		cusReg = null;
-		invSys = null;
-		priSys = null;
-		cashReg = null;
-		eSH = null;
+	public void tearDown() throws Exception {
 		sale = null;
 		item = null;
-		payment = null;
+		saleDTO = null;
+		pSH = null;
+		cashReg = null;
 	}
+
 	@Test
-	public void testGetLatestSaleId() {
-		assertTrue("Should be 0 at initiation",eSH.getLatestSaleId() == 0);
+	public void testPrintReceipt() {
+		pSH = new PrintingSystemHandler();
+		pSH.printReceipt(saleDTO);
 	}
-	@Test
-	public void testRegisterCompleteSale() {
-		eSH.registerCompletedSale(saleDTO);
-		assertTrue("Should be 0 at initiation",eSH.getLatestSaleId() == 1);
-	}
-	@Test
-	public void testfindItem() throws Exception {
-		item =  eSH.findItem(1101);
-		assertTrue("The returned item itemExist should be true",item.getItemValid());
-	}
-	
 
 }

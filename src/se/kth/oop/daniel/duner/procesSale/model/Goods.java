@@ -1,8 +1,5 @@
 package se.kth.oop.daniel.duner.procesSale.model;
 
-import se.kth.oop.daniel.duner.procesSale.integration.Amount;
-import se.kth.oop.daniel.duner.procesSale.integration.Item;
-
 /**
  * Contains all the items the customer wants to buy during a sale, it will
  * update when an item is registered to the sale.

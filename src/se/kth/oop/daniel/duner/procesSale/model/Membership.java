@@ -1,7 +1,5 @@
 package se.kth.oop.daniel.duner.procesSale.model;
 
-import se.kth.oop.daniel.duner.procesSale.integration.MEMLVL;
-
 /**
  * Represents membership data, only mean to ransport data
  * 
@@ -13,7 +11,7 @@ public class Membership {
 	private boolean membership;
 	private MEMLVL membershipLevel;
 /**
- * Instantiates the a membership
+ * Creates a membership with information about membership level and if membership is valid
  * @param membership represents if the membership is valid or not
  * @param membershipLevel represents the level of the membership
  */

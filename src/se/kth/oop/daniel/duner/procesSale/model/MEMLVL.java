@@ -1,4 +1,4 @@
-package se.kth.oop.daniel.duner.procesSale.integration;
+package se.kth.oop.daniel.duner.procesSale.model;
 /**
  * Represents the different memberships
  * @author danielduner

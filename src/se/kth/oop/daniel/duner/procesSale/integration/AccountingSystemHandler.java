@@ -1,23 +1,21 @@
-package se.kth.oop.daniel.duner.procesSale.database;
+package se.kth.oop.daniel.duner.procesSale.integration;
 
 import se.kth.oop.daniel.duner.procesSale.model.SaleDTO;
 
 /**
- * Represents a database that stores all sales (HARDCODED)
+ * Represents the system that handles the database that stores all sales (HARDCODED)
  * 
  * @author danielduner
  *
  */
 
-public class AccountingSystem {
+public class AccountingSystemHandler {
 	private SaleDTO[] saleRegister;
-	private int latestSaleId = 0;
-	private int nextSaleId = 1;
 	
 	/**
 	 * Instantiates the accounting system
 	 */
-	public AccountingSystem() {
+	public AccountingSystemHandler() {
 		saleRegister = new SaleDTO[0];
 	}
 
@@ -28,17 +26,15 @@ public class AccountingSystem {
 	 */
 	public void registerCompletedSale(SaleDTO saleDTO) {
 		updateSaleRegister(saleDTO);
-		latestSaleId++;
-		nextSaleId++;
 	}
 
 	private void updateSaleRegister(SaleDTO saleDTO) {	
-		SaleDTO[] newSaleRegister = new SaleDTO[nextSaleId];
+		SaleDTO[] newSaleRegister = new SaleDTO[this.getNextSaleId()];
 
-		for (int i = 0; i < latestSaleId; i++) {
+		for (int i = 0; i < this.getLatestSaleId(); i++) {
 			newSaleRegister[i] = saleRegister[i];
 		}
-		newSaleRegister[latestSaleId] = saleDTO;
+		newSaleRegister[this.getLatestSaleId()] = saleDTO;
 		saleRegister = newSaleRegister.clone();
 	}
 /**
@@ -48,6 +44,13 @@ public class AccountingSystem {
  * @return returns latest sale ID
  */
 	public int getLatestSaleId() {
-		return latestSaleId;
+		return saleRegister.length;
+	}
+	/**
+	 * returns the ID of the nextSale
+	 * @return
+	 */
+	private int getNextSaleId() {
+		return saleRegister.length+1;
 	}
 }

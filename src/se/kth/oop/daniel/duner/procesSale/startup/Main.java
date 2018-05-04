@@ -3,12 +3,12 @@ package se.kth.oop.daniel.duner.procesSale.startup;
 import static java.lang.System.out;
 
 import se.kth.oop.daniel.duner.procesSale.controller.Controller;
-import se.kth.oop.daniel.duner.procesSale.database.AccountingSystem;
-import se.kth.oop.daniel.duner.procesSale.database.CustomerRegister;
-import se.kth.oop.daniel.duner.procesSale.database.InventorySystem;
-import se.kth.oop.daniel.duner.procesSale.database.PrintingSystem;
-import se.kth.oop.daniel.duner.procesSale.integration.Amount;
-import se.kth.oop.daniel.duner.procesSale.integration.ExternalSystemHandler;
+import se.kth.oop.daniel.duner.procesSale.controller.ExternalSystemHandler;
+import se.kth.oop.daniel.duner.procesSale.integration.AccountingSystemHandler;
+import se.kth.oop.daniel.duner.procesSale.integration.CustomerRegisterHandler;
+import se.kth.oop.daniel.duner.procesSale.integration.InventorySystemHandler;
+import se.kth.oop.daniel.duner.procesSale.integration.PrintingSystemHandler;
+import se.kth.oop.daniel.duner.procesSale.model.Amount;
 import se.kth.oop.daniel.duner.procesSale.model.CashRegister;
 import se.kth.oop.daniel.duner.procesSale.view.View;
 
@@ -22,22 +22,22 @@ import se.kth.oop.daniel.duner.procesSale.view.View;
 
 public class Main {
 	//View view;
-	AccountingSystem accountingSystem;
-	CustomerRegister customerRegister;
-	InventorySystem inventory;
-	PrintingSystem printingSystem;
+	AccountingSystemHandler accountingSystemHandler;
+	CustomerRegisterHandler customerRegisterHandler;
+	InventorySystemHandler inventoryHandler;
+	PrintingSystemHandler printingSystemHandler;
 	CashRegister cashRegister;
 	ExternalSystemHandler externalSystemHandler;
 	Controller controller;
 		
 	public static void main(String args[])throws Exception {
 		View view = new View();
-		AccountingSystem accountingSystem = new AccountingSystem();
-		CustomerRegister customerRegister = new CustomerRegister();
-		InventorySystem inventory = new InventorySystem();
-		PrintingSystem printingSystem = new PrintingSystem();
-		CashRegister cashRegister = new CashRegister("SEK");
-		ExternalSystemHandler externalSystemHandler = new ExternalSystemHandler(accountingSystem, customerRegister, inventory, printingSystem);
+		AccountingSystemHandler accountingSystemHandler = new AccountingSystemHandler();
+		CustomerRegisterHandler customerRegisterHandler = new CustomerRegisterHandler();
+		InventorySystemHandler inventoryHandler = new InventorySystemHandler();
+		PrintingSystemHandler printingSystemHandler = new PrintingSystemHandler();
+		CashRegister cashRegister = new CashRegister();
+		ExternalSystemHandler externalSystemHandler = new ExternalSystemHandler(accountingSystemHandler, customerRegisterHandler, inventoryHandler, printingSystemHandler);
 		
 		Controller controller = new Controller(externalSystemHandler,cashRegister);
 

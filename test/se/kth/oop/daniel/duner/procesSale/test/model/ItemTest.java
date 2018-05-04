@@ -1,4 +1,4 @@
-package se.kth.oop.daniel.duner.procesSale.test.integration;
+package se.kth.oop.daniel.duner.procesSale.test.model;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -7,8 +7,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import se.kth.oop.daniel.duner.procesSale.integration.Amount;
-import se.kth.oop.daniel.duner.procesSale.integration.Item;
+import se.kth.oop.daniel.duner.procesSale.model.Amount;
+import se.kth.oop.daniel.duner.procesSale.model.Item;
 
 public class ItemTest {
 	private Item testItem;

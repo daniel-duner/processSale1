@@ -1,7 +1,5 @@
 package se.kth.oop.daniel.duner.procesSale.model;
 
-import se.kth.oop.daniel.duner.procesSale.integration.Amount;
-
 public class TotalCostDTO {
 	private Amount totalAmount;
 	private Amount discountAmount;

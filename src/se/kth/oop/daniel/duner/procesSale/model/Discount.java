@@ -1,9 +1,5 @@
 package se.kth.oop.daniel.duner.procesSale.model;
 
-import exceptions.InvalidAmountException;
-import exceptions.InvalidStringException;
-import se.kth.oop.daniel.duner.procesSale.integration.MEMLVL;
-
 /**
  * Holds the information of discounts
  * 

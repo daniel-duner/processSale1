@@ -1,24 +1,24 @@
-package se.kth.oop.daniel.duner.procesSale.database;
+package se.kth.oop.daniel.duner.procesSale.integration;
 
-import se.kth.oop.daniel.duner.procesSale.integration.MEMLVL;
 import se.kth.oop.daniel.duner.procesSale.model.Address;
 import se.kth.oop.daniel.duner.procesSale.model.Customer;
+import se.kth.oop.daniel.duner.procesSale.model.MEMLVL;
 import se.kth.oop.daniel.duner.procesSale.model.Membership;
 
 /**
- * Represents a database that stores all customers (HARDCODED)
+ * Represents the system that handles the database that stores all customers (HARDCODED)
  * @author danielduner
  *
  */
 
-public class CustomerRegister {
+public class CustomerRegisterHandler {
 	private Customer[] customerRegister;
 	private Address adress = new Address("Begslagsvägen", 41, "Stockholm", 16848);	
 
 	/**
 	 * Instatiates the Customer Register
 	 */
-	public CustomerRegister() {
+	public CustomerRegisterHandler() {
 		customerRegister = new Customer[5];
 		customerRegister[0] = new Customer("Anders", "Svensson", 01010101, adress, new Membership(true, MEMLVL.GOLD));
 		customerRegister[1] = new Customer("Per", "Persson", 02020202, adress, new Membership(false, MEMLVL.NONE));

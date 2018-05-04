@@ -3,12 +3,12 @@ package se.kth.oop.daniel.duner.procesSale.view;
 import static java.lang.System.out;
 
 import se.kth.oop.daniel.duner.procesSale.controller.Controller;
-import se.kth.oop.daniel.duner.procesSale.database.AccountingSystem;
-import se.kth.oop.daniel.duner.procesSale.database.CustomerRegister;
-import se.kth.oop.daniel.duner.procesSale.database.InventorySystem;
-import se.kth.oop.daniel.duner.procesSale.database.PrintingSystem;
-import se.kth.oop.daniel.duner.procesSale.integration.Amount;
-import se.kth.oop.daniel.duner.procesSale.integration.ExternalSystemHandler;
+import se.kth.oop.daniel.duner.procesSale.controller.ExternalSystemHandler;
+import se.kth.oop.daniel.duner.procesSale.integration.AccountingSystemHandler;
+import se.kth.oop.daniel.duner.procesSale.integration.CustomerRegisterHandler;
+import se.kth.oop.daniel.duner.procesSale.integration.InventorySystemHandler;
+import se.kth.oop.daniel.duner.procesSale.integration.PrintingSystemHandler;
+import se.kth.oop.daniel.duner.procesSale.model.Amount;
 import se.kth.oop.daniel.duner.procesSale.model.CashRegister;
 import se.kth.oop.daniel.duner.procesSale.model.SaleInformationDTO;
 
@@ -21,7 +21,8 @@ import se.kth.oop.daniel.duner.procesSale.model.SaleInformationDTO;
 public class View {
 
 	/**
-	 * the input cart
+	 * Representing the cart with items that customer gives the cashier and which the
+	 * cashier will scan
 	 */
 	private int[] cart;
 
@@ -34,9 +35,7 @@ public class View {
 
 	/**
 	 * the visualization of running total in view
-	 * 
-	 * @param saleInformationDTO
-	 *            the saleInformation needed to print the running total
+	 * @param saleInformationDTO  the saleInformation needed to print the running total
 	 */
 	public static void runningTotal(SaleInformationDTO saleInformationDTO) {
 		Amount runningTotal = saleInformationDTO.getRunningTotal();
@@ -56,10 +55,8 @@ public class View {
 		}
 	}
 	/**
-	 *  
 	 *  returns the cart with all items to be scanned to the caller
-	 *  
-	 * @return
+	 * @return returns the cart
 	 */
 	public int[] getCart() {
 		return cart;
