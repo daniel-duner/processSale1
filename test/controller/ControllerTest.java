@@ -8,17 +8,17 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import se.kth.oop.daniel.duner.procesSale.controller.Controller;
-import se.kth.oop.daniel.duner.procesSale.controller.ExternalSystemHandler;
-import se.kth.oop.daniel.duner.procesSale.integration.AccountingSystemHandler;
-import se.kth.oop.daniel.duner.procesSale.integration.CustomerRegisterHandler;
-import se.kth.oop.daniel.duner.procesSale.integration.InventorySystemHandler;
-import se.kth.oop.daniel.duner.procesSale.integration.PrintingSystemHandler;
-import se.kth.oop.daniel.duner.procesSale.model.Amount;
-import se.kth.oop.daniel.duner.procesSale.model.CashRegister;
-import se.kth.oop.daniel.duner.procesSale.model.MEMLVL;
-import se.kth.oop.daniel.duner.procesSale.model.SaleInformationDTO;
-import se.kth.oop.daniel.duner.procesSale.model.TotalCost;
+import se.kth.ood.daniel.duner.procesSale.controller.Controller;
+import se.kth.ood.daniel.duner.procesSale.controller.ExternalSystemHandler;
+import se.kth.ood.daniel.duner.procesSale.integration.AccountingSystemHandler;
+import se.kth.ood.daniel.duner.procesSale.integration.CustomerRegisterHandler;
+import se.kth.ood.daniel.duner.procesSale.integration.InventorySystemHandler;
+import se.kth.ood.daniel.duner.procesSale.integration.PrintingSystemHandler;
+import se.kth.ood.daniel.duner.procesSale.model.Amount;
+import se.kth.ood.daniel.duner.procesSale.model.CashRegister;
+import se.kth.ood.daniel.duner.procesSale.model.MEMLVL;
+import se.kth.ood.daniel.duner.procesSale.model.SaleInformationDTO;
+import se.kth.ood.daniel.duner.procesSale.model.TotalCost;
 
 public class ControllerTest {
 	private AccountingSystemHandler accSys;

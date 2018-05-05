@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="javadoc">
+    <target name="javadoc">
+        <javadoc access="public" author="true" classpath="C:\Users\danielduner\.p2\pool\plugins\org.hamcrest.core_1.3.0.v201303031735.jar;C:\Users\danielduner\.p2\pool\plugins\org.junit_4.12.0.v201504281640\junit.jar" destdir="C:\Users\danielduner\Dropbox\05KTH\Object oriented programming\Seminarium\Seminarie 3" doctitle="Process Sale Manual" nodeprecated="false" nodeprecatedlist="false" noindex="false" nonavbar="false" notree="false" packagenames="se.kth.ood.daniel.duner.procesSale.view" source="1.8" sourcepath="test;src" splitindex="true" use="true" version="true"/>
+    </target>
+</project>
