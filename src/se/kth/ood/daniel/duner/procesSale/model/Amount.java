@@ -13,11 +13,11 @@ import java.text.NumberFormat;
  */
 public class Amount {
 	private final double amount;
-	private CURRENCY currency;
+	private Currency currency;
 
 	public Amount(){
 		amount = 0;
-		currency = CURRENCY.SEK;	
+		currency = Currency.SEK;	
 
 	}
 /**
@@ -31,7 +31,7 @@ public class Amount {
 		} else {
 			this.amount = amount;
 		}
-		currency = CURRENCY.SEK;
+		currency = Currency.SEK;
 
 	}
 
@@ -80,7 +80,7 @@ public class Amount {
 		return this.amount;
 	}
 
-	public CURRENCY getCurrency() {
+	public Currency getCurrency() {
 		return this.currency;
 	}
 

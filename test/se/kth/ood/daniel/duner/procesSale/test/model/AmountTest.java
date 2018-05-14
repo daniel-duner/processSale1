@@ -11,7 +11,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import se.kth.ood.daniel.duner.procesSale.model.Amount;
-import se.kth.ood.daniel.duner.procesSale.model.CURRENCY;
+import se.kth.ood.daniel.duner.procesSale.model.Currency;
 import se.kth.ood.daniel.duner.procesSale.model.InvalidAmountException;
 
 public class AmountTest {
@@ -63,7 +63,7 @@ public class AmountTest {
 	public void testCreatingAmountwithoutArguments() throws Exception {
 		Amount testAmount = new Amount();
 		assertTrue("Verifies that amount is 0", testAmount.getAmount()==0);
-		assertTrue("verifies that currency is SEK", testAmount.getCurrency() == CURRENCY.SEK);
+		assertTrue("verifies that currency is SEK", testAmount.getCurrency() == Currency.SEK);
 	}
 	
 	

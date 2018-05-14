@@ -1,7 +1,9 @@
 package se.kth.ood.daniel.duner.procesSale.integration;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+
 import se.kth.ood.daniel.duner.procesSale.model.Amount;
-import se.kth.ood.daniel.duner.procesSale.model.Goods;
 import se.kth.ood.daniel.duner.procesSale.model.Item;
 import se.kth.ood.daniel.duner.procesSale.model.SaleDTO;
 
@@ -15,7 +17,6 @@ import se.kth.ood.daniel.duner.procesSale.model.SaleDTO;
 public class InventorySystemHandler {
 	private Item[] inventory;
 	private int[] quantities;
-	private boolean itemFound;
 
 	/**
 	 * Instantiates the InventorySystem
@@ -65,44 +66,64 @@ public class InventorySystemHandler {
 	}
 	
 	/**
-	 * 
 	 * Searches after the item in the inventory and returns an Item either empty if it doesn't
 	 * exist else it will return an empty item
-	 * 
 	 * @param itemId item ID of the searched item
 	 * @return returns either the found item or an empty item declared that it doesn't exist
+	 * @throws FailedToConnectException 
+	 * @throws UnsupportedEncodingException 
+	 * @throws FileNotFoundException 
 	 * @throws Exception
 	 */
-
-	public Item findItem(int itemId) throws Exception {
-		Item searchedItem = new Item(itemId);
-		int foundItemIndex = (getItemIndexNo(searchedItem));
-		if (itemFound) {
-			inventory[foundItemIndex].setItemExistTrue();
-			return inventory[foundItemIndex];
-		} else {
-			searchedItem.setItemExistFalse();
-			return searchedItem;
+	public Item findItem(int itemId) throws ItemNotFoundException, FailedToConnectException, FileNotFoundException, UnsupportedEncodingException {
+		if(itemId == 1111){
+			throw new FailedToConnectException("Database failure", itemId);	
+		}else if(checkIfItemExists(itemId))
+		for (Item item : inventory) {
+			if (itemId == item.getItemId()) {
+				return item;
+			}
 		}
+		else {
+			throw new ItemNotFoundException(itemId);
+		}
+		return null;
 	}
 
 /**
- *	Fetches and items position in the array, if item doesn't exist it will return that
- *	set itemFound
- * @param item represent the searched item
- * @return returns the position and if the item is found or not
+ * Checks if an item with the same item Id exists in the inventory
+ * @param searchedItemId represents the searched item id
+ * @return returns true if the item exists or false if it doesn't
+ * @throws FailedToConnectException 
+ * @throws UnsupportedEncodingException 
+ * @throws FileNotFoundException 
  */
-	private int getItemIndexNo(Item item) {
-		int searchedIndexNo = item.getItemId();
-		int indexNoNotFound = -1;
-		for (int i = 0; i < inventory.length; i++) {
-			if (searchedIndexNo == inventory[i].getItemId()) {
-				int foundItemIndex = i;
-				itemFound = true;
-				return foundItemIndex;
+	private boolean checkIfItemExists(int searchedItemId) throws FailedToConnectException, FileNotFoundException, UnsupportedEncodingException {
+		for (Item item : inventory) {
+			if (searchedItemId == item.getItemId()) {
+				return true;
 			}
 		}
-		itemFound = false;
-		return indexNoNotFound;
+		return false;
+	}
+
+/**
+ * Fetches an items position in the inventory
+ * @param searchedItem represents the searched item
+ * @return an items position in the inventory
+ */
+	private int getItemIndexNo(Item searchedItem) {
+		int searchedIndexNo = 0;
+		int currentIndex = 0;
+		for (Item item : inventory) {
+			if (searchedItem == item) {
+				searchedIndexNo = currentIndex;
+			}
+			currentIndex++;
+		}
+		return searchedIndexNo;
+
 	}
 }
+
+

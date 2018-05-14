@@ -28,7 +28,6 @@ public class PrintingSystemHandlerTest {
 		cashReg = new CashRegister();
 		sale = new Sale(1);
 		item = new Item(1101, new Amount(2), "description", "name");
-		item.setItemExistTrue();
 		sale.addItem(item);
 		sale.endRegistration();
 		payment = new Amount(3);

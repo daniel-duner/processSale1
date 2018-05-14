@@ -38,7 +38,7 @@ public class PaymentTest {
 		double result = newPayment.getChange().getAmount();
 		double delta = 1-newPayment.getChange().getAmount();
 		
-		assertEquals("",expResult,result, delta);
+		assertEquals("change should be 1",expResult,result, delta);
 	}
 
 }

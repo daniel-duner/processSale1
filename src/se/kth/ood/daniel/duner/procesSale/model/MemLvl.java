@@ -4,6 +4,6 @@ package se.kth.ood.daniel.duner.procesSale.model;
  * @author danielduner
  *
  */
-public enum MEMLVL {
+public enum MemLvl {
 	GOLD, SILVER, BRONZE, NONE
 }

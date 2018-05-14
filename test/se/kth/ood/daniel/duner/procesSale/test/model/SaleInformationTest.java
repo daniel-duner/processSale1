@@ -20,7 +20,6 @@ public class SaleInformationTest {
 		saleInf = new SaleInformation();
 		goods = new Goods();
 		item = new Item(1101,new Amount(0), "description", "name");
-		item.setItemExistTrue();
 	}
 
 	@After
@@ -32,7 +31,6 @@ public class SaleInformationTest {
 	public void testInstantiatedCorrectly() {
 		assertTrue("running Total not created correctly",saleInf.getRunningTotal() == null);
 		assertTrue("item not set to null on instantiation",saleInf.getItem() == null);
-		assertTrue("itemValid not set to false on instantiation",saleInf.getItemValid() == false);
 		assertTrue("quantity not set to 0 on instantiation",saleInf.getQuantity() == 0);
 		assertTrue("noOnList not set to 0 on instantiation",saleInf.getNoOnList() == 0);
 	}
@@ -50,7 +48,6 @@ public class SaleInformationTest {
 	}
 	@Test
 	public void testUpdateSaleInformationItemInvalid() throws Exception {
-		item.setItemExistFalse();
 		saleInf.updateSaleInformation(goods, item);
 		assertTrue("noOnList should be 0",saleInf.getNoOnList() == 0);
 	}

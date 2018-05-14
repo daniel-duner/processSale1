@@ -9,13 +9,13 @@ package se.kth.ood.daniel.duner.procesSale.model;
 
 public class Membership {
 	private boolean membership;
-	private MEMLVL membershipLevel;
+	private MemLvl membershipLevel;
 /**
  * Creates a membership with information about membership level and if membership is valid
  * @param membership represents if the membership is valid or not
  * @param membershipLevel represents the level of the membership
  */
-	public Membership(boolean membership, MEMLVL membershipLevel) {
+	public Membership(boolean membership, MemLvl membershipLevel) {
 		this.membership = membership;
 		this.membershipLevel = membershipLevel;
 	}
@@ -32,10 +32,10 @@ public class Membership {
 		return membership;
 	}
 
-	public MEMLVL getMembershipLevel() {
+	public MemLvl getMembershipLevel() {
 		return membershipLevel;
 	}
-	private String firstLetterToUpperCase(MEMLVL input){
+	private String firstLetterToUpperCase(MemLvl input){
 		return input.toString().substring(0, 1).toUpperCase() + input.toString().substring(1);
 		
 	}

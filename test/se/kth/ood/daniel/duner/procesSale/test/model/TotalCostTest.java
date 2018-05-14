@@ -8,7 +8,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import se.kth.ood.daniel.duner.procesSale.model.Amount;
-import se.kth.ood.daniel.duner.procesSale.model.MEMLVL;
+import se.kth.ood.daniel.duner.procesSale.model.MemLvl;
 import se.kth.ood.daniel.duner.procesSale.model.Membership;
 import se.kth.ood.daniel.duner.procesSale.model.TotalCost;
 
@@ -47,7 +47,7 @@ public class TotalCostTest {
 	
 	@Test
 	public void testSetDiscountEligibility() throws Exception {
-		Membership memb = new Membership(true,MEMLVL.GOLD);
+		Membership memb = new Membership(true,MemLvl.GOLD);
 		Amount price = new Amount(100);
 		totCost.setDiscountEligibility(memb, price);
 		assertTrue("Added membership is not setting discount eligibility correct",totCost.getMembership().getMembership());

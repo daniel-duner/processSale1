@@ -30,7 +30,6 @@ public class AccountingSystemHandler {
 	 */
 	public void registerCompletedSale(SaleDTO saleDTO) {
 		updateSaleRegister(saleDTO);
-		System.out.println("hej");
 		lastSaleId++;
 		nextSaleId++;
 	}

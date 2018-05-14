@@ -1,9 +1,10 @@
 package controller;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import se.kth.ood.daniel.duner.procesSale.controller.ExternalSystemHandler;
@@ -19,6 +20,7 @@ import se.kth.ood.daniel.duner.procesSale.model.SaleDTO;
 
 public class ExternalSystemHandlerTest {
 	private AccountingSystemHandler accSys;
+	
 	private CustomerRegisterHandler cusReg;
 	private InventorySystemHandler invSys;
 	private PrintingSystemHandler priSys;
@@ -39,7 +41,6 @@ public class ExternalSystemHandlerTest {
 		eSH = new ExternalSystemHandler(accSys, cusReg, invSys, priSys);
 		sale = new Sale(1);
 		item = new Item(1101, new Amount(2), "description", "name");
-		item.setItemExistTrue();
 		sale.addItem(item);
 		sale.endRegistration();
 		payment = new Amount(3);
@@ -67,11 +68,5 @@ public class ExternalSystemHandlerTest {
 		eSH.registerCompletedSale(saleDTO);
 		assertTrue("Should be 0 at initiation",eSH.getLastSaleId() == 1);
 	}
-	@Test
-	public void testfindItem() throws Exception {
-		item =  eSH.findItem(1101);
-		assertTrue("The returned item itemExist should be true",item.getItemValid());
-	}
-	
 
 }

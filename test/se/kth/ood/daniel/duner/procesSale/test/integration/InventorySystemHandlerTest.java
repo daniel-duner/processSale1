@@ -26,7 +26,6 @@ public class InventorySystemHandlerTest {
 		sale = new Sale(1);
 		sale2 = new Sale(2);
 		item = new Item(1101, new Amount(2), "description", "name");
-		item.setItemExistTrue();
 		sale.addMultipleItems(item, 3);
 		saleDTO = new SaleDTO(sale);
 		saleDTO2 = new SaleDTO(sale2);
@@ -54,11 +53,4 @@ public class InventorySystemHandlerTest {
 		int itemId = 1102;
 		assertEquals("Does not find the correct item","Blyertspenna", invSys.findItem(itemId).getName());
 	}
-	@Test
-	public void testFindItemsIncorrect() throws Exception {
-		int itemId = 1106;
-		assertFalse("Does not find the correct item",invSys.findItem(itemId).getItemValid());
-	}
-	
-
 }

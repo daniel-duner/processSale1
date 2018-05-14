@@ -54,7 +54,6 @@ public class ItemTest {
 		assertEquals("Item Id is not transfered correctly",1101, testItem.getItemId());
 		assertEquals("Price is not transfered correctly",0, testItem.getPrice().getAmount(),0);
 		assertEquals("Name is not transfered correctly","name", testItem.getName());
-		assertEquals("Name is not transfered correctly",false, testItem.getItemValid());
 	}
 	
 

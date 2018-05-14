@@ -34,9 +34,6 @@ public class Goods {
 	 * @throws Exception
 	 */
 	public void addItem(Item item) throws Exception {
-
-		boolean itemExists = item.getItemValid();
-		if (itemExists) {
 			if (items.length == empty) {
 				items = new Item[1];
 				quantity = new int[1];	
@@ -59,7 +56,6 @@ public class Goods {
 				quantity = newQuantity;
 				increasePrice(item);
 			}
-		}
 	}
 
 /**
@@ -79,7 +75,7 @@ public class Goods {
 	}
 /**
  * Adds the price of the item to the total price of the goods
- * @param item represents the item which is added to a sale
+ * @param item Item represents the item which is added to a sale
  * @throws Exception
  */
 	private void increasePrice(Item item) throws Exception {
@@ -89,8 +85,8 @@ public class Goods {
  * 
  * Checks if an item with same id already has been added to the goods
  * 
- * @param item represents the item that caller wants to check isn't already in the goods
- * @return returns true if the item already exists in the goods
+ * @param item Item represents the item that caller wants to check isn't already in the goods
+ * @return returns Returns true if the item already exists in the goods else false is returned
  */
 	private boolean itemAlreadyInGoods(Item item) {
 		if (this.searchItemIndexNo(item) == doesNotExist) {
@@ -103,8 +99,8 @@ public class Goods {
  * 
  * Searches after an item in the goods and returns it's position in the list if it exist
  * 
- * @param item represents the item which caller is looking for
- * @return returns the index of the position the item searched 
+ * @param item Item represents the item which caller is looking for
+ * @return Returns the index of the position the item searched 
  * or returns doesNotExist if it's not in the list.
  */
 	private int searchItemIndexNo(Item item) {

@@ -5,6 +5,6 @@ package se.kth.ood.daniel.duner.procesSale.model;
  * @author danielduner
  *
  */
-public enum CURRENCY {
+public enum Currency {
 	SEK
 }

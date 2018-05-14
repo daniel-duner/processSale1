@@ -20,8 +20,6 @@ public class GoodsTest {
 	public void setUp() throws Exception {
 		item1 = new Item(1101, new Amount(1), "description", "name");
 		item2 = new Item(1102, new Amount(1), "description", "name");
-		item1.setItemExistTrue();
-		item2.setItemExistTrue();
 		goods = new Goods();
 	}
 	

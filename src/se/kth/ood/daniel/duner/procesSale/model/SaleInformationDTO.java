@@ -9,15 +9,13 @@ package se.kth.ood.daniel.duner.procesSale.model;
 public class SaleInformationDTO {
 		Amount runningTotal;
 		Amount itemPrice;
-		boolean itemValid;
 		String itemName;
 		int quantity;
 		int noOnList;
 		
-		SaleInformationDTO(SaleInformation saleInformation){
+		public SaleInformationDTO(SaleInformation saleInformation){
 			runningTotal = saleInformation.getRunningTotal();
 			itemPrice = saleInformation.getItem().getPrice();
-			itemValid = saleInformation.getItemValid();
 			itemName = saleInformation.getItem().getName();
 			quantity = saleInformation.getQuantity();
 			noOnList = saleInformation.getNoOnList();
@@ -28,9 +26,6 @@ public class SaleInformationDTO {
 		}
 		public Amount getRunningTotal() {
 			return runningTotal;
-		}
-		public boolean getItemValid() {
-			return itemValid;
 		}
 		public String getItemName() {
 			return itemName;

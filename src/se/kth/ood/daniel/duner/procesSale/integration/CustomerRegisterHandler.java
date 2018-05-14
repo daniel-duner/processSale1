@@ -2,7 +2,7 @@ package se.kth.ood.daniel.duner.procesSale.integration;
 
 import se.kth.ood.daniel.duner.procesSale.model.Address;
 import se.kth.ood.daniel.duner.procesSale.model.Customer;
-import se.kth.ood.daniel.duner.procesSale.model.MEMLVL;
+import se.kth.ood.daniel.duner.procesSale.model.MemLvl;
 import se.kth.ood.daniel.duner.procesSale.model.Membership;
 
 /**
@@ -20,11 +20,11 @@ public class CustomerRegisterHandler {
 	 */
 	public CustomerRegisterHandler() {
 		customerRegister = new Customer[5];
-		customerRegister[0] = new Customer("Anders", "Svensson", 01010101, adress, new Membership(true, MEMLVL.GOLD));
-		customerRegister[1] = new Customer("Per", "Persson", 02020202, adress, new Membership(false, MEMLVL.NONE));
-		customerRegister[2] = new Customer("Arne", "Arnesson", 03030303, adress, new Membership(true, MEMLVL.BRONZE));
-		customerRegister[3] = new Customer("Alexander", "Alexandersson", 04040404, adress, new Membership(true, MEMLVL.SILVER));
-		customerRegister[4] = new Customer("Sune", "Sunesson", 05050505, adress, new Membership(false, MEMLVL.NONE));
+		customerRegister[0] = new Customer("Anders", "Svensson", 01010101, adress, new Membership(true, MemLvl.GOLD));
+		customerRegister[1] = new Customer("Per", "Persson", 02020202, adress, new Membership(false, MemLvl.NONE));
+		customerRegister[2] = new Customer("Arne", "Arnesson", 03030303, adress, new Membership(true, MemLvl.BRONZE));
+		customerRegister[3] = new Customer("Alexander", "Alexandersson", 04040404, adress, new Membership(true, MemLvl.SILVER));
+		customerRegister[4] = new Customer("Sune", "Sunesson", 05050505, adress, new Membership(false, MemLvl.NONE));
 	}
 	
 	/**
@@ -40,6 +40,6 @@ public class CustomerRegisterHandler {
 				return customerRegister[i].getMembership();
 			}
 		}
-		return new Membership(false, MEMLVL.NONE);
+		return new Membership(false, MemLvl.NONE);
 	}
 }

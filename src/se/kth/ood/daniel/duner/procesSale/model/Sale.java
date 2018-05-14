@@ -39,9 +39,7 @@ public class Sale {
 	 * @throws Exception
 	 */
 	public SaleInformationDTO addItem(Item item) throws Exception {
-		if (item.getItemValid()) {
-			goods.addItem(item);
-		}
+		goods.addItem(item);
 		saleInformation.updateSaleInformation(goods, item);
 		SaleInformationDTO saleInformationDTO = new SaleInformationDTO(saleInformation);
 		return saleInformationDTO;
@@ -58,11 +56,9 @@ public class Sale {
 	 * @throws Exception
 	 */
 	public SaleInformationDTO addMultipleItems(Item item, int quantity) throws Exception {
-		if (item.getItemValid()) {
-			for (int i = 0; i < quantity; i++) {
-				goods.addItem(item);
-			}	
-		}
+		for (int i = 0; i < quantity; i++) {
+			goods.addItem(item);
+		}	
 		saleInformation.updateSaleInformation(goods, item, quantity);
 		SaleInformationDTO saleInformationDTO = new SaleInformationDTO(saleInformation);
 		return saleInformationDTO;
@@ -93,6 +89,8 @@ public class Sale {
 	 */
 	public Amount registerPayment(Amount payment, CashRegister cashRegister) throws Exception {
 		cashPayment = new Payment(payment, totalCost, cashRegister);
+		TotalRevenue.getInstance().setTotalRevenue(totalCost.getTotalAmount());
+		TotalRevenue.getInstance().notifyObservers();
 		return cashPayment.getChange();
 	}
 /**

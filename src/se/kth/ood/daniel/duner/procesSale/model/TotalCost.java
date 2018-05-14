@@ -26,7 +26,7 @@ public class TotalCost {
 		taxAmount = new Amount(0);
 		tax = new ValueAddedTax(0.25);
 		discount = new Discount(0.1,0.15,0.25);
-		membership = new Membership(false, MEMLVL.NONE);
+		membership = new Membership(false, MemLvl.NONE);
 	}
 /**
  * 

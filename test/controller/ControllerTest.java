@@ -16,7 +16,7 @@ import se.kth.ood.daniel.duner.procesSale.integration.InventorySystemHandler;
 import se.kth.ood.daniel.duner.procesSale.integration.PrintingSystemHandler;
 import se.kth.ood.daniel.duner.procesSale.model.Amount;
 import se.kth.ood.daniel.duner.procesSale.model.CashRegister;
-import se.kth.ood.daniel.duner.procesSale.model.MEMLVL;
+import se.kth.ood.daniel.duner.procesSale.model.MemLvl;
 import se.kth.ood.daniel.duner.procesSale.model.SaleInformationDTO;
 import se.kth.ood.daniel.duner.procesSale.model.TotalCost;
 
@@ -100,8 +100,8 @@ public class ControllerTest {
 	public void testRequestDiscount() throws Exception {
 		contr.startNewSale();
 		TotalCost totCost = contr.requestDiscount(10101010);
-		MEMLVL result = totCost.getMembership().getMembershipLevel();
-		MEMLVL expResult = MEMLVL.NONE;
+		MemLvl result = totCost.getMembership().getMembershipLevel();
+		MemLvl expResult = MemLvl.NONE;
 		assertEquals("The set membership level should be NONE",expResult, result);
 	}
 	

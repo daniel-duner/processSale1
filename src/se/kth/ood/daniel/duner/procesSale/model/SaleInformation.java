@@ -1,5 +1,8 @@
 package se.kth.ood.daniel.duner.procesSale.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Handles and contains information about a sale that is needed during a sale
  * process
@@ -11,10 +14,10 @@ package se.kth.ood.daniel.duner.procesSale.model;
 public class SaleInformation {
 	private Amount runningTotal;
 	private Item item;
-	private boolean itemValid;
 	private int quantity;
 	private int noOnList;
 	private final int singleItem = 1;
+	
 
 	/**
 	 * Instantiates a saleInformation
@@ -22,9 +25,9 @@ public class SaleInformation {
 	public SaleInformation() {
 		runningTotal = null;
 		item = null;
-		itemValid = false;
 		quantity = 0;
 		noOnList = 0;
+		
 	}
 
 	/**
@@ -61,10 +64,6 @@ public class SaleInformation {
 		return runningTotal;
 	}
 
-	public boolean getItemValid() {
-		return itemValid;
-	}
-
 	public Item getItem() {
 		return item;
 	}
@@ -76,9 +75,7 @@ public class SaleInformation {
 	private void updateInformation(Goods goods, Item item) throws Exception {
 		runningTotal = new Amount(goods.getPrice().getAmount());
 		this.item = item;
-		itemValid = item.getItemValid();
-		if (itemValid) {
 			noOnList++;
-		}
 	}
+
 }

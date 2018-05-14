@@ -14,7 +14,6 @@ private String name;
 private int itemId;
 private Amount price;
 private String itemDescription;
-private boolean itemExist;
 
 /**
  * Instantiates an Item without arguments
@@ -25,7 +24,6 @@ this.name = "undefined";
 this.itemId = 00000000;
 this.price = new Amount(0);
 this.itemDescription = "undefined";
-this.itemExist = true;
 }
 
 /**
@@ -38,7 +36,6 @@ this.name = "undefined";
 this.itemId = itemId;
 this.price = new Amount(0);
 this.itemDescription = "undefined";
-this.itemExist = false;
 }
 
 /**
@@ -84,13 +81,6 @@ public void setItemDescription(String itemDescription) {
 	this.itemDescription = itemDescription;
 }
 
-public void setItemExistTrue(){
-	this.itemExist = true;
-}
-public void setItemExistFalse(){
-	this.itemExist = false;
-}
-
 public String getName() {
 	return this.name;
 }
@@ -103,9 +93,5 @@ public Amount getPrice() {
 public String getItemDescription() {
 	return this.itemDescription;
 }
-public boolean getItemValid() {
-	return itemExist;
-}
-
 
 }

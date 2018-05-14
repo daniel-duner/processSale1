@@ -46,7 +46,7 @@ public class Discount {
  * @param membershipLevel represents the membership level which to change
  * @throws Exception 
  */
-	public void setSingleDiscount(double discount, MEMLVL membershipLevel) throws Exception {
+	public void setSingleDiscount(double discount, MemLvl membershipLevel) throws Exception {
 		if (checkAllowedDiscountValue(discount)) {
 			throw new InvalidAmountException("discount must be a positive double between 0 and 1");
 		}
@@ -89,7 +89,7 @@ public class Discount {
  * @return returns a chosen discount value
  * @throws Exception
  */
-	public double getDiscount(MEMLVL membershipLevel) throws Exception {
+	public double getDiscount(MemLvl membershipLevel) throws Exception {
 		if (checkAllowedMembership(membershipLevel)) {
 			throw new InvalidStringException("membershiplevel must be gold, silver or bronze");
 		}
@@ -107,8 +107,8 @@ public class Discount {
 		return 0;
 	}
 
-	private boolean checkAllowedMembership(MEMLVL membershipLevel) {
-		if (membershipLevel != MEMLVL.GOLD && membershipLevel != MEMLVL.SILVER && membershipLevel != MEMLVL.BRONZE) {
+	private boolean checkAllowedMembership(MemLvl membershipLevel) {
+		if (membershipLevel != MemLvl.GOLD && membershipLevel != MemLvl.SILVER && membershipLevel != MemLvl.BRONZE) {
 			return true;
 		}
 		return false;

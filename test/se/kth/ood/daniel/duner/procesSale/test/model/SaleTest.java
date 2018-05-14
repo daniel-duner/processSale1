@@ -17,7 +17,7 @@ import se.kth.ood.daniel.duner.procesSale.integration.PrintingSystemHandler;
 import se.kth.ood.daniel.duner.procesSale.model.Amount;
 import se.kth.ood.daniel.duner.procesSale.model.CashRegister;
 import se.kth.ood.daniel.duner.procesSale.model.Item;
-import se.kth.ood.daniel.duner.procesSale.model.MEMLVL;
+import se.kth.ood.daniel.duner.procesSale.model.MemLvl;
 import se.kth.ood.daniel.duner.procesSale.model.Membership;
 import se.kth.ood.daniel.duner.procesSale.model.Sale;
 
@@ -29,7 +29,6 @@ public class SaleTest {
 	public void setUp() throws Exception {
 		sale = new Sale(1);
 		item = new Item(1101, new Amount(2), "description", "name");
-		item.setItemExistTrue();
 	}
 
 	@After
@@ -56,7 +55,6 @@ public class SaleTest {
 
 	@Test
 	public void testAddItemItemInvalid() throws Exception {
-		item.setItemExistFalse();
 		sale.addItem(item);
 		assertFalse("item is not added to sale correctly", sale.getGoods().getItems().length == 1);
 	}
@@ -70,7 +68,6 @@ public class SaleTest {
 
 	@Test
 	public void testAddMultipleItemsItemInvalid() throws Exception {
-		item.setItemExistFalse();
 		sale.addMultipleItems(item, 2);
 		assertTrue("item is not added to sale correctly in item array", sale.getGoods().getItems().length == 0);
 		assertTrue("item is not added to sale correctly in quantity array", sale.getGoods().getQuantity().length == 0);
@@ -104,8 +101,8 @@ public class SaleTest {
 	}
 	@Test
 	public void testsetDiscountEligibility() throws Exception {
-		Membership membership = new Membership(false, MEMLVL.NONE);
-		Membership membership1 = new Membership(true, MEMLVL.GOLD);
+		Membership membership = new Membership(false, MemLvl.NONE);
+		Membership membership1 = new Membership(true, MemLvl.GOLD);
 		sale.setDiscountEligibility(membership);
 		sale.setDiscountEligibility(membership1);
 		assertTrue("",sale.getTotalCost().getMembership().getMembership());

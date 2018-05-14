@@ -28,7 +28,7 @@ public class ValueAddedTax {
 		this.valueAddedTax = valueAddedTax;
 	}
 /**
- * sets the tax rate with chosen tax rate
+ * Sets the tax rate with chosen tax rate
  * @param valueAddedTax represents the chosen tax rate
  * @throws Exception
  */
@@ -38,15 +38,19 @@ public class ValueAddedTax {
 		}
 		this.valueAddedTax = valueAddedTax;
 	}
-
-	public double getValueAddedTax() {
-		return this.valueAddedTax;
-	}
-
+	
 	private boolean checkAllowedValueAddedTax(double valueAddedTax) {
 		if (valueAddedTax <= fullTaxRate && valueAddedTax >= zeroTax) {
 			return true;
 		}
 		return false;
+	}	
+	
+	
+	
+	
+	
+	public double getValueAddedTax() {
+		return this.valueAddedTax;
 	}
 }
