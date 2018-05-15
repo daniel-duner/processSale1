@@ -1,7 +1,11 @@
 package se.kth.ood.daniel.duner.procesSale.model;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
+
+import se.kth.ood.daniel.duner.procesSale.integration.ItemNotFoundException;
 
 /**
  * Handles and contains information about a sale that is needed during a sale
@@ -37,7 +41,8 @@ public class SaleInformation {
 	 * @param item represents the item that most recently was added to the sale
 	 * @throws Exception
 	 */
-	public void updateSaleInformation(Goods goods, Item item) throws Exception {
+	public void updateSaleInformation(Goods goods, Item item) throws InvalidStringException, InvalidAmountException, 
+	FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		this.updateInformation(goods, item);
 		this.quantity = singleItem;
 	}
@@ -51,7 +56,8 @@ public class SaleInformation {
 	 * @throws Exception
 	 */
 
-	public void updateSaleInformation(Goods goods, Item item, int quantity) throws Exception {
+	public void updateSaleInformation(Goods goods, Item item, int quantity) throws InvalidStringException, InvalidAmountException, 
+	FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		this.updateInformation(goods, item);
 		this.quantity = quantity;
 	}
@@ -72,7 +78,7 @@ public class SaleInformation {
 		return quantity;
 	}
 
-	private void updateInformation(Goods goods, Item item) throws Exception {
+	private void updateInformation(Goods goods, Item item) throws InvalidStringException, InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		runningTotal = new Amount(goods.getPrice().getAmount());
 		this.item = item;
 			noOnList++;

@@ -1,5 +1,7 @@
 package se.kth.ood.daniel.duner.procesSale.model;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
@@ -25,7 +27,7 @@ public class Amount {
  * @param amount represents the chosen amount
  * @throws Exception
  */
-	public Amount(double amount) throws Exception {
+	public Amount(double amount) throws InvalidAmountException {
 		if (amount < 0) {
 			throw new InvalidAmountException("Negative values are not allowed");
 		} else {
@@ -41,10 +43,13 @@ public class Amount {
 	 * @param currentAmount represents the amount which we want to subtract from or add to
 	 * @param additionalAmount represents the amount we want to subtract or add to the currentAmount
 	 * @param operation represents the the operation either notation for add or for subtract
+	 * @throws UnsupportedEncodingException 
+	 * @throws FileNotFoundException 
+	 * @throws InvalidCharException 
 	 * @throws Exception
 	 */
 	public Amount(Amount currentAmount, Amount additionalAmount, char operation)
-			throws Exception {
+			throws InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		if (operation == '-' || operation == '+') {
 			double newAmount = 0;
 			if (operation == '-') {

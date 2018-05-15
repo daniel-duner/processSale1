@@ -1,8 +1,12 @@
 package se.kth.ood.daniel.duner.procesSale.controller;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+
 import se.kth.ood.daniel.duner.procesSale.integration.AccountingSystemHandler;
 import se.kth.ood.daniel.duner.procesSale.integration.CustomerRegisterHandler;
 import se.kth.ood.daniel.duner.procesSale.integration.InventorySystemHandler;
+import se.kth.ood.daniel.duner.procesSale.integration.ItemNotFoundException;
 import se.kth.ood.daniel.duner.procesSale.integration.PrintingSystemHandler;
 import se.kth.ood.daniel.duner.procesSale.model.Customer;
 import se.kth.ood.daniel.duner.procesSale.model.Item;
@@ -86,7 +90,7 @@ public class ExternalSystemHandler {
 	 * @return returns an Item representing the information of the item searched
 	 * @throws Exception
 	 */
-	public Item findItem (int itemId) throws Exception {
+	public Item findItem (int itemId) throws ItemNotFoundException,FileNotFoundException, UnsupportedEncodingException {
 		return inventoryHandler.findItem(itemId);
 	}
 	

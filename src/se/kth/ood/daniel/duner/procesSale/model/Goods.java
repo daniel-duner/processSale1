@@ -1,5 +1,8 @@
 package se.kth.ood.daniel.duner.procesSale.model;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+
 /**
  * Contains all the items the customer wants to buy during a sale, it will
  * update when an item is registered to the sale.
@@ -21,7 +24,7 @@ public class Goods {
 	 * 
 	 * @throws Exception
 	 */
-	public Goods() throws Exception {
+	public Goods() throws InvalidStringException, InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		price = new Amount(noValue);
 		quantity = new int[empty];
 		items = new Item[empty];
@@ -33,7 +36,7 @@ public class Goods {
 	 * @param item represents the item that caller wants to add to goods
 	 * @throws Exception
 	 */
-	public void addItem(Item item) throws Exception {
+	public void addItem(Item item) throws InvalidStringException, InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 			if (items.length == empty) {
 				items = new Item[1];
 				quantity = new int[1];	
@@ -78,7 +81,7 @@ public class Goods {
  * @param item Item represents the item which is added to a sale
  * @throws Exception
  */
-	private void increasePrice(Item item) throws Exception {
+	private void increasePrice(Item item) throws InvalidStringException, InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		price = new Amount(price, item.getPrice(), '+');;
 	}
 /**

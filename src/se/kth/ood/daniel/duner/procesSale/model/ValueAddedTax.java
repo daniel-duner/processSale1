@@ -1,5 +1,8 @@
 package se.kth.ood.daniel.duner.procesSale.model;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+
 /**
  * Contains information of value added tax
  * @author danielduner
@@ -21,7 +24,7 @@ public class ValueAddedTax {
  * @param valueAddedTax chosen tax rate
  * @throws Exception
  */
-	public ValueAddedTax(double valueAddedTax) throws Exception {
+	public ValueAddedTax(double valueAddedTax) throws InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		if (checkAllowedValueAddedTax(valueAddedTax) == false) {
 			throw new InvalidAmountException("value-added tax can only be a double between 0 and 1");
 		}
@@ -32,7 +35,7 @@ public class ValueAddedTax {
  * @param valueAddedTax represents the chosen tax rate
  * @throws Exception
  */
-	public void setValueAddedTax(double valueAddedTax) throws Exception {
+	public void setValueAddedTax(double valueAddedTax) throws InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		if (checkAllowedValueAddedTax(valueAddedTax) == false) {
 			throw new InvalidAmountException("value-added tax can only be a double between 0 and 1");
 		}

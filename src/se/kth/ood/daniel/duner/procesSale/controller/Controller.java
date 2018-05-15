@@ -1,7 +1,14 @@
 package se.kth.ood.daniel.duner.procesSale.controller;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+
+import se.kth.ood.daniel.duner.procesSale.integration.ItemNotFoundException;
 import se.kth.ood.daniel.duner.procesSale.model.Amount;
 import se.kth.ood.daniel.duner.procesSale.model.CashRegister;
+import se.kth.ood.daniel.duner.procesSale.model.InvalidAmountException;
+import se.kth.ood.daniel.duner.procesSale.model.InvalidCharException;
+import se.kth.ood.daniel.duner.procesSale.model.InvalidStringException;
 import se.kth.ood.daniel.duner.procesSale.model.Item;
 import se.kth.ood.daniel.duner.procesSale.model.Membership;
 import se.kth.ood.daniel.duner.procesSale.model.Sale;
@@ -34,7 +41,8 @@ public class Controller {
 	 * Starts a new Sale and is issued in the beginning of a sale process
 	 * @throws Exception
 	 */
-	public void startNewSale() throws Exception {
+	public void startNewSale() throws InvalidStringException, InvalidAmountException, FileNotFoundException, 
+	UnsupportedEncodingException, InvalidCharException {
 		sale = new Sale(externalSystemHandler.getNextSaleId());
 	}
 
@@ -46,7 +54,8 @@ public class Controller {
 	 * @throws Exception
 	 */
 
-	public SaleInformationDTO registerItem(int itemId) throws Exception {
+	public SaleInformationDTO registerItem(int itemId) throws ItemNotFoundException, InvalidStringException, 
+	InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		return sale.addItem(externalSystemHandler.findItem(itemId));
 	}
 
@@ -59,7 +68,8 @@ public class Controller {
 	 * @throws Exception
 	 */
 
-	public SaleInformationDTO registerMultipleItems(int itemId, int quantity) throws Exception {
+	public SaleInformationDTO registerMultipleItems(int itemId, int quantity) throws ItemNotFoundException,
+	InvalidStringException, InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		return sale.addMultipleItems(externalSystemHandler.findItem(itemId), quantity);
 	}
 
@@ -69,7 +79,8 @@ public class Controller {
 	 * @throws Exception
 	 */
 
-	public TotalCost endRegistration() throws Exception {
+	public TotalCost endRegistration() throws InvalidStringException, InvalidAmountException, 
+	FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		return sale.endRegistration();
 	}
 
@@ -80,7 +91,8 @@ public class Controller {
 	 * @throws Exception
 	 */
 
-	public Amount registerPayment(Amount payment) throws Exception {
+	public Amount registerPayment(Amount payment) throws InvalidStringException, InvalidAmountException, 
+	FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		Amount change = sale.registerPayment(payment, cashRegister);
 		sale.endSale(externalSystemHandler);
 		return change;
@@ -94,7 +106,8 @@ public class Controller {
 	 * @throws Exception
 	 */
 
-	public TotalCost requestDiscount(int customerId) throws Exception {
+	public TotalCost requestDiscount(int customerId) throws InvalidStringException, InvalidAmountException, 
+	FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		Membership membership = externalSystemHandler.findCustomer(customerId);
 		sale.setDiscountEligibility(membership);
 		return sale.getTotalCost();

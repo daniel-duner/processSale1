@@ -1,5 +1,8 @@
 package se.kth.ood.daniel.duner.procesSale.model;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+
 import se.kth.ood.daniel.duner.procesSale.controller.ExternalSystemHandler;
 import se.kth.ood.daniel.duner.procesSale.integration.*;
 /**
@@ -21,7 +24,7 @@ public class Sale {
 	 * @param saleId represents the ID number of the new sale
 	 * @throws Exception
 	 */
-	public Sale(int saleId) throws Exception {
+	public Sale(int saleId) throws InvalidStringException, InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		this.saleId = saleId;
 		this.saleDate = new SaleDate();
 		this.goods = new Goods();
@@ -38,7 +41,7 @@ public class Sale {
 	 * @return returns sale information to the caller
 	 * @throws Exception
 	 */
-	public SaleInformationDTO addItem(Item item) throws Exception {
+	public SaleInformationDTO addItem(Item item) throws InvalidStringException, InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		goods.addItem(item);
 		saleInformation.updateSaleInformation(goods, item);
 		SaleInformationDTO saleInformationDTO = new SaleInformationDTO(saleInformation);
@@ -55,7 +58,7 @@ public class Sale {
 	 * @return returns sale information to the caller
 	 * @throws Exception
 	 */
-	public SaleInformationDTO addMultipleItems(Item item, int quantity) throws Exception {
+	public SaleInformationDTO addMultipleItems(Item item, int quantity) throws InvalidStringException, InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		for (int i = 0; i < quantity; i++) {
 			goods.addItem(item);
 		}	
@@ -72,7 +75,7 @@ public class Sale {
 	 * @return returns total cost of the sale including taxes
 	 * @throws Exception
 	 */
-	public TotalCost endRegistration() throws Exception {
+	public TotalCost endRegistration() throws InvalidStringException, InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		totalCost.setTotalCost(goods.getPrice());
 		return totalCost;
 	}
@@ -87,7 +90,7 @@ public class Sale {
 	 * @return returns the calculated change
 	 * @throws Exception
 	 */
-	public Amount registerPayment(Amount payment, CashRegister cashRegister) throws Exception {
+	public Amount registerPayment(Amount payment, CashRegister cashRegister) throws InvalidStringException, InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		cashPayment = new Payment(payment, totalCost, cashRegister);
 		TotalRevenue.getInstance().setTotalRevenue(totalCost.getTotalAmount());
 		TotalRevenue.getInstance().notifyObservers();
@@ -107,7 +110,8 @@ public class Sale {
  * @param membership represents the information about the customers membership status
  * @throws Exception
  */
-	public void setDiscountEligibility(Membership membership) throws Exception {
+	public void setDiscountEligibility(Membership membership) throws InvalidStringException, InvalidAmountException, 
+	FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		totalCost.setDiscountEligibility(membership, goods.getPrice());
 	}
 

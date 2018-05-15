@@ -1,5 +1,8 @@
 package se.kth.ood.daniel.duner.procesSale.model;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+
 /**
  * Represents an item
  * itemDescription: A short text describing the item
@@ -19,7 +22,7 @@ private String itemDescription;
  * Instantiates an Item without arguments
  * @throws Exception
  */
-public Item() throws Exception {	
+public Item() throws InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {	
 this.name = "undefined";
 this.itemId = 00000000;
 this.price = new Amount(0);
@@ -31,7 +34,7 @@ this.itemDescription = "undefined";
  * @param itemId represents the item id which to give the Item
  * @throws Exception
  */
-public Item(int itemId) throws Exception {
+public Item(int itemId) throws InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 this.name = "undefined";
 this.itemId = itemId;
 this.price = new Amount(0);

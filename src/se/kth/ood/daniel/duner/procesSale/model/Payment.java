@@ -1,5 +1,8 @@
 package se.kth.ood.daniel.duner.procesSale.model;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+
 /**
  * Represents a payment that the is received from customer to cashier and then to system
  * @author danielduner
@@ -17,7 +20,7 @@ public class Payment {
  * @param cashRegister represents the cash register
  * @throws Exception
  */
-	public Payment(Amount payment, TotalCost totalCost,CashRegister cashRegister) throws Exception {
+	public Payment(Amount payment, TotalCost totalCost,CashRegister cashRegister) throws InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		this.payment = payment;
 		this.totalCost = totalCost;		
 		calculateChange();	
@@ -36,7 +39,7 @@ public class Payment {
 		return totalCost;
 	}
 
-	private void calculateChange() throws Exception {
+	private void calculateChange() throws InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		change = new Amount(payment, totalCost.getTotalAmount(),'-');
 	}
 

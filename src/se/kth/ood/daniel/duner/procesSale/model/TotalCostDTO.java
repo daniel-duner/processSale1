@@ -1,5 +1,8 @@
 package se.kth.ood.daniel.duner.procesSale.model;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+
 public class TotalCostDTO {
 	private Amount totalAmount;
 	private Amount discountAmount;
@@ -7,7 +10,7 @@ public class TotalCostDTO {
 	private Membership membership;
 	
 	
-	public TotalCostDTO(TotalCost totalCost) throws Exception {
+	public TotalCostDTO(TotalCost totalCost) throws InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		this.totalAmount = totalCost.getTotalAmount();
 		this.discountAmount = totalCost.getDiscountAmount();
 		this.taxAmount = totalCost.getTaxAmount();

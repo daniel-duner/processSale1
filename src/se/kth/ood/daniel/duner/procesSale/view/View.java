@@ -2,9 +2,16 @@ package se.kth.ood.daniel.duner.procesSale.view;
 
 import static java.lang.System.out;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+
 import se.kth.ood.daniel.duner.procesSale.controller.Controller;
+import se.kth.ood.daniel.duner.procesSale.integration.FailedToConnectException;
 import se.kth.ood.daniel.duner.procesSale.integration.ItemNotFoundException;
 import se.kth.ood.daniel.duner.procesSale.model.Amount;
+import se.kth.ood.daniel.duner.procesSale.model.InvalidAmountException;
+import se.kth.ood.daniel.duner.procesSale.model.InvalidCharException;
+import se.kth.ood.daniel.duner.procesSale.model.InvalidStringException;
 import se.kth.ood.daniel.duner.procesSale.model.SaleInformationDTO;
 
 /**
@@ -28,7 +35,7 @@ public class View implements Observer{
 		this.totRev = totRev;
 	}
 	
-	public void processSale() throws Exception {
+	public void processSale() throws ItemNotFoundException, InvalidStringException, InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		out.println("Customer comes to the checkout with goods and the cashier initiates a new sale".toUpperCase());
 		controller.startNewSale();
 		out.println("Cashier recevies item and starts to register them \n".toUpperCase());
@@ -39,7 +46,7 @@ public class View implements Observer{
 		registerItem(cart[1]);
 		registerItem(cart[1]);
 		registerItem(cart[2]);
-		// registerItem(1111);
+		registerItem(1111);
 		totRev.printDisplay();
 		runningTotal(controller.registerMultipleItems(cart[0], 2));
 		out.println("--------------------------------------------\n");
@@ -63,11 +70,13 @@ public class View implements Observer{
 	 * @param itemId the searched item id
 	 * @throws Exception if the item cannot be found in the inventory
 	 */
-	public void registerItem(int itemId) throws Exception {
+	public void registerItem(int itemId) throws InvalidStringException, InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		try {
 			runningTotal(controller.registerItem(itemId));
 		} catch (ItemNotFoundException ItemNotFoundException) {
 			System.out.println("The item with the item id: "+itemId+" does not exist, try again\n");
+		} catch (FailedToConnectException FailedToConnectException) {
+			System.out.println("Failed to connect to the database when searching for the item with the item id: "+itemId+", try again\n");
 		}
 	}
 	

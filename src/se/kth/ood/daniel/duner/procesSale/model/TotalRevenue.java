@@ -1,5 +1,7 @@
 package se.kth.ood.daniel.duner.procesSale.model;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,10 +51,10 @@ public class TotalRevenue implements Subject{
 		}
 	}
 	
-	public void setTotalRevenue(Amount payment) throws Exception {
+	public void setTotalRevenue(Amount payment) throws InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		this.totalRevenue = new Amount(totalRevenue, payment,'+');
 	}
-	public void setTotalRevenue(double amount) throws Exception {
+	public void setTotalRevenue(double amount) throws InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		this.totalRevenue = new Amount(amount);
 	}
 

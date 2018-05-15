@@ -5,11 +5,11 @@ import java.io.UnsupportedEncodingException;
 
 import se.kth.ood.daniel.duner.procesSale.model.ReportLogger;
 
-public class FailedToConnectException extends Exception {
+public class FailedToConnectException extends RuntimeException {
 
-	public FailedToConnectException(String message, int searchedItemId) throws FileNotFoundException, UnsupportedEncodingException {
+	public FailedToConnectException(String message) throws FileNotFoundException, UnsupportedEncodingException {
 		super(message);
 		 ReportLogger logger = ReportLogger.getInstance();
-	        logger.addReport("Failed to connect to the Database when searching for item with ID: "+searchedItemId);
+	        logger.addReport(message);
 	}
 }

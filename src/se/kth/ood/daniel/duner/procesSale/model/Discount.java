@@ -1,5 +1,8 @@
 package se.kth.ood.daniel.duner.procesSale.model;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+
 /**
  * Holds the information of discounts
  * 
@@ -31,7 +34,8 @@ public class Discount {
 	 * @param discountBronze represents chosen discount amount for bronze membership
 	 * @throws Exception represents an exception that is thrown if any of the amounts are less than 0 or more than 1%
 	 */
-	public Discount(double discountGold, double discountSilver, double discountBronze) throws Exception {
+	public Discount(double discountGold, double discountSilver, double discountBronze) throws InvalidStringException, InvalidAmountException, 
+	FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		if (checkAllowedDiscountValue(discountGold) || checkAllowedDiscountValue(discountSilver)
 				|| checkAllowedDiscountValue(discountBronze)) {
 			throw new InvalidAmountException("discount must be a positive double between 0 and 1");
@@ -46,7 +50,8 @@ public class Discount {
  * @param membershipLevel represents the membership level which to change
  * @throws Exception 
  */
-	public void setSingleDiscount(double discount, MemLvl membershipLevel) throws Exception {
+	public void setSingleDiscount(double discount, MemLvl membershipLevel) throws InvalidStringException, InvalidAmountException, 
+	FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		if (checkAllowedDiscountValue(discount)) {
 			throw new InvalidAmountException("discount must be a positive double between 0 and 1");
 		}
@@ -74,7 +79,8 @@ public class Discount {
  * @param discountBronze represents chosen discount amount for bronze membership
  * @throws Exception
  */
-	public void setAllDiscounts(double discountGold, double discountSilver, double discountBronze) throws Exception {
+	public void setAllDiscounts(double discountGold, double discountSilver, double discountBronze) throws InvalidStringException, InvalidAmountException, 
+	FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		if (checkAllowedDiscountValue(discountGold) || checkAllowedDiscountValue(discountSilver)
 				|| checkAllowedDiscountValue(discountBronze)) {
 			throw new InvalidAmountException("discount must be a positive double between 0 and 1");
@@ -89,7 +95,8 @@ public class Discount {
  * @return returns a chosen discount value
  * @throws Exception
  */
-	public double getDiscount(MemLvl membershipLevel) throws Exception {
+	public double getDiscount(MemLvl membershipLevel) throws InvalidStringException, InvalidAmountException, 
+	FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		if (checkAllowedMembership(membershipLevel)) {
 			throw new InvalidStringException("membershiplevel must be gold, silver or bronze");
 		}

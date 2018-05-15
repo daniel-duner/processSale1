@@ -78,9 +78,9 @@ public class InventorySystemHandler {
 	 * @throws FileNotFoundException 
 	 * @throws Exception
 	 */
-	public Item findItem(int itemId) throws ItemNotFoundException, FailedToConnectException, FileNotFoundException, UnsupportedEncodingException {
+	public Item findItem(int itemId) throws ItemNotFoundException, FileNotFoundException, UnsupportedEncodingException {
 		if(itemId == 1111){
-			throw new FailedToConnectException("Database failure", itemId);	
+			throw new FailedToConnectException("Failed to connect to the Database when searching for item with ID: " + itemId);	
 		}else if(checkIfItemExists(itemId)) {
 			return findItemStrategy.findItem(itemId, inventory);
 		}

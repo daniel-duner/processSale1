@@ -1,5 +1,8 @@
 package se.kth.ood.daniel.duner.procesSale.model;
 
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
+
 /**
  * 
  * Contains and handles information about things affecting the total cost of the sale
@@ -20,7 +23,7 @@ public class TotalCost {
 	 * different membership statuses set to 10%, 15% and 25%
 	 * @throws Exception
 	 */
-	public TotalCost() throws Exception {		
+	public TotalCost() throws InvalidStringException, InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {		
 		totalAmount = new Amount(0);
 		discountAmount = new Amount(0);
 		taxAmount = new Amount(0);
@@ -43,7 +46,8 @@ public class TotalCost {
 	 * @param price represents the current price previous to eventual discount
 	 * @throws Exception
 	 */
-	public void setDiscountEligibility(Membership membership, Amount price) throws Exception {
+	public void setDiscountEligibility(Membership membership, Amount price) throws InvalidStringException, 
+	InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		this.membership = membership;
 		this.setTotalCost(price);
 	}
@@ -52,7 +56,8 @@ public class TotalCost {
 	 * @param price represents the new price excluded tax or discounts
 	 * @throws Exception
 	 */
-	public void setTotalCost(Amount price) throws Exception {
+	public void setTotalCost(Amount price) throws InvalidStringException, InvalidAmountException, 
+	FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		totalAmount = new Amount(price.getAmount());
 		taxAmount = calculateAmount(price,tax.getValueAddedTax());
 		totalAmount = new Amount(totalAmount, taxAmount, '+');
@@ -73,7 +78,8 @@ public class TotalCost {
 	public Membership getMembership() {
 		return membership;
 	}
-	private Amount calculateAmount(Amount price, double increase) throws Exception{
+	private Amount calculateAmount(Amount price, double increase) throws InvalidStringException, InvalidAmountException, 
+	FileNotFoundException, UnsupportedEncodingException, InvalidCharException{
 		 return new Amount(price.getAmount()*increase);
 	}
 }
