@@ -27,33 +27,56 @@ public class TotalRevenue implements Subject{
 	}
 	
 	/**
-	 * @return the only instance of TotalRevenue
+	 * Returns the only instance of the TotalRevenue object
+	 * @return returns the intance of TotalRevenue
 	 */
 	public static TotalRevenue getInstance() {
 		return instance;
 	}
+	/**
+	 * Adds an instance of <Observer> to the ArrayList observers
+	 */
 	@Override
 	public void addObserver(Observer observer) {
 		observers.add(observer);
 		
 	}
-
+	/**
+	 * removes an instance of <Observer> from the ArrayList observers
+	 */
 	@Override
 	public void removeObserver(Observer observer) {
 		observers.remove(observer);
 		
 	}
-
+	/**
+	 * Notifies all observers in the ArrayList observers
+	 */
 	@Override
 	public void notifyObservers() {
 		for(Observer observer:observers) {
 			observer.update(this.totalRevenue);
 		}
 	}
-	
+	/**
+	 * Adds an amount to the total revenue
+	 * @param payment represents the payment that is added to the total revenue
+	 * @throws InvalidAmountException if the amount is negative
+	 * @throws FileNotFoundException
+	 * @throws UnsupportedEncodingException
+	 * @throws InvalidCharException if the operator isn't + or -
+	 */
 	public void setTotalRevenue(Amount payment) throws InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		this.totalRevenue = new Amount(totalRevenue, payment,'+');
 	}
+	/**
+	 * Sets the amount of the total revenue
+	 * @param amount represents an amount
+	 * @throws InvalidAmountException if the amount is negative
+	 * @throws FileNotFoundException
+	 * @throws UnsupportedEncodingException
+	 * @throws InvalidCharException if the operator isn't + or -
+	 */
 	public void setTotalRevenue(double amount) throws InvalidAmountException, FileNotFoundException, UnsupportedEncodingException, InvalidCharException {
 		this.totalRevenue = new Amount(amount);
 	}

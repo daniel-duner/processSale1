@@ -12,7 +12,12 @@ import se.kth.ood.daniel.duner.procesSale.model.ReportLogger;
  */
 public class ItemNotFoundException extends Exception {
 	private int itemIdNotFound;
-	
+	/**
+	 * Creates an instance of the ItemNotFoundException
+	 * @param itemIdNotFound represents the item that was searched but could not be found in the database
+	 * @throws FileNotFoundException
+	 * @throws UnsupportedEncodingException
+	 */
     public ItemNotFoundException(int itemIdNotFound) throws FileNotFoundException, UnsupportedEncodingException {
     	super("The Item Id:" + itemIdNotFound + " could not be found");
         this.itemIdNotFound = itemIdNotFound;
@@ -21,6 +26,7 @@ public class ItemNotFoundException extends Exception {
     }
     
     /**
+     * Returns the itemIdNotFound to the caller
      * @return returns the itemId that could not be found
      */
     public int getItemNotFound() {
