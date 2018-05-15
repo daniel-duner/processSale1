@@ -17,6 +17,7 @@ import se.kth.ood.daniel.duner.procesSale.model.SaleDTO;
 public class InventorySystemHandler {
 	private Item[] inventory;
 	private int[] quantities;
+	private FindItemStrategy findItemStrategy;
 
 	/**
 	 * Instantiates the InventorySystem
@@ -36,6 +37,7 @@ public class InventorySystemHandler {
 		quantities[2] = 3;
 		quantities[3] = 3;
 		quantities[4] = 3;
+		this.findItemStrategy = new NormalStrategy();
 	}
 	/**
 	 * returns the inventory
@@ -65,6 +67,7 @@ public class InventorySystemHandler {
 		}
 	}
 	
+	
 	/**
 	 * Searches after the item in the inventory and returns an Item either empty if it doesn't
 	 * exist else it will return an empty item
@@ -78,18 +81,19 @@ public class InventorySystemHandler {
 	public Item findItem(int itemId) throws ItemNotFoundException, FailedToConnectException, FileNotFoundException, UnsupportedEncodingException {
 		if(itemId == 1111){
 			throw new FailedToConnectException("Database failure", itemId);	
-		}else if(checkIfItemExists(itemId))
-		for (Item item : inventory) {
-			if (itemId == item.getItemId()) {
-				return item;
-			}
+		}else if(checkIfItemExists(itemId)) {
+			return findItemStrategy.findItem(itemId, inventory);
 		}
 		else {
 			throw new ItemNotFoundException(itemId);
 		}
-		return null;
 	}
-
+	/**
+	 * Sets the FindItemStrategy, for the <FindItem> method
+	 */
+	public void setFindItemStrategy(FindItemStrategy findItemStrategy) {
+		this.findItemStrategy = findItemStrategy;
+	}
 /**
  * Checks if an item with the same item Id exists in the inventory
  * @param searchedItemId represents the searched item id

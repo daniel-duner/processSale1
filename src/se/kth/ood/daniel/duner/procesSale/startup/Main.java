@@ -4,7 +4,10 @@ import se.kth.ood.daniel.duner.procesSale.controller.Controller;
 import se.kth.ood.daniel.duner.procesSale.controller.ExternalSystemHandler;
 import se.kth.ood.daniel.duner.procesSale.integration.AccountingSystemHandler;
 import se.kth.ood.daniel.duner.procesSale.integration.CustomerRegisterHandler;
+import se.kth.ood.daniel.duner.procesSale.integration.FindItemStrategy;
 import se.kth.ood.daniel.duner.procesSale.integration.InventorySystemHandler;
+import se.kth.ood.daniel.duner.procesSale.integration.NormalStrategy;
+import se.kth.ood.daniel.duner.procesSale.integration.SecondaryStrategy;
 import se.kth.ood.daniel.duner.procesSale.integration.PrintingSystemHandler;
 import se.kth.ood.daniel.duner.procesSale.model.CashRegister;
 import se.kth.ood.daniel.duner.procesSale.model.TotalRevenue;
@@ -29,13 +32,17 @@ public class Main {
 		AccountingSystemHandler accountingSystemHandler = new AccountingSystemHandler();
 		CustomerRegisterHandler customerRegisterHandler = new CustomerRegisterHandler();
 		InventorySystemHandler inventoryHandler = new InventorySystemHandler();
+		
 		PrintingSystemHandler printingSystemHandler = new PrintingSystemHandler();
 		CashRegister cashRegister = new CashRegister();
 		ExternalSystemHandler externalSystemHandler = new ExternalSystemHandler(accountingSystemHandler, customerRegisterHandler, inventoryHandler, printingSystemHandler);
 		Controller controller = new Controller(externalSystemHandler,cashRegister);
 		View view = new View(controller, totalRevenueView);
+		inventoryHandler.setFindItemStrategy(new NormalStrategy());
 		view.processSale();
+		inventoryHandler.setFindItemStrategy(new SecondaryStrategy());
 		view.processSale();
+		
 		
 	
 	}
