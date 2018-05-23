@@ -3,6 +3,7 @@ package se.kth.ood.daniel.duner.procesSale.view;
 import se.kth.ood.daniel.duner.procesSale.model.Amount;
 import se.kth.ood.daniel.duner.procesSale.model.InvalidAmountException;
 import se.kth.ood.daniel.duner.procesSale.model.InvalidStringException;
+import se.kth.ood.daniel.duner.procesSale.model.Observer;
 import se.kth.ood.daniel.duner.procesSale.model.Subject;
 /**
  * Represents the display that displays the total revenue during a run of the program

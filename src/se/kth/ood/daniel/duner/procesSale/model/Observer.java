@@ -1,6 +1,4 @@
-package se.kth.ood.daniel.duner.procesSale.view;
-
-import se.kth.ood.daniel.duner.procesSale.model.Amount;
+package se.kth.ood.daniel.duner.procesSale.model;
 
 /**
  * Observer interface, which is implemented by classes that wants to be updated

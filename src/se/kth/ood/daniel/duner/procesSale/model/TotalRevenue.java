@@ -4,8 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
-
-import se.kth.ood.daniel.duner.procesSale.view.Observer;
 /**
  * Stores all revenues from all sales
  * @author danielduner
